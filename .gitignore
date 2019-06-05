@@ -1,0 +1,13 @@
+.DS_Store
+.vscode
+
+src/lib/core/metadata.js
+lsrc/ib/core/MetadataBlog.js
+
+src/website/translated_docs
+src/website/build/
+src/website/yarn.lock
+src/website/node_modules
+src/website/i18n/*
+
+src/website/README.bak.md

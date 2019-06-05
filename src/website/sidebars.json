@@ -1,0 +1,61 @@
+{
+  "docs": {
+    "简介": [
+      "sec1-introduction",
+      "sec1-core-concept"
+    ],
+    "顶层api": [
+      "doc1"
+    ],
+    "类api": [
+      "doc2"
+    ],
+    "CcFragmentApi": [
+      "doc3"
+    ]
+  },
+  "docs-other": {
+    "顶层api": [
+      "api-top-run",
+      "api-top-configure",
+      "api-top-clone-module",
+      "api-top-register",
+      "api-top-connect",
+      "api-top-connect-dumb",
+      "api-top-emit",
+      "api-top-emit-with",
+      "api-top-dispatch",
+      "api-top-get-state",
+      "api-top-get-global-state",
+      "api-top-get-computed",
+      "api-top-set-state",
+      "api-top-set-global-state",
+      "api-top-call",
+      "api-top-execute",
+      "api-top-execute-all"
+    ],
+    "模块api": [
+      "api-module-dispatch",
+      "api-module-effect"
+    ],
+    "类api": [
+      "api-class-watch",
+      "api-class-computed",
+      "api-class-on-url-changed",
+      "api-class-cache",
+      "api-class-before-set-state",
+      "api-class-before-broadcast"
+    ],
+    "实例api": [
+      "api-ref-dispatch",
+      "api-ref-effect",
+      "api-ref-xeffect",
+      "api-ref-invoke",
+      "api-ref-xinvoke"
+    ],
+    "CcFragment api": [
+      "doc4",
+      "doc5"
+    ]
+  }
+}
