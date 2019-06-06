@@ -1,20 +1,28 @@
 {
   "docs": {
-    "简介": [
-      "sec1-introduction",
-      "sec1-core-concept"
+    "序言": [
+      "doc-intro-what-is-concent",
+      "doc-intro-compare-others"
     ],
-    "顶层api": [
-      "doc1"
+    "新手指南": [
+      "doc-guid-quick-start",
+      "doc-guid-progressive-dev",
+      "doc-guid-standard-dev"
     ],
-    "类api": [
-      "doc2"
+    "核心概念与功能":[
+      "doc-core-module",
+      "doc-core-component",
+      "doc-core-debug"
     ],
-    "CcFragmentApi": [
-      "doc3"
+    "生态与周边": [
+      "doc-eco-router",
+      "doc-eco-loading"
+    ],
+    "精彩示例": [
+      "doc-case-antd-pro"
     ]
   },
-  "docs-other": {
+  "apis": {
     "顶层api": [
       "api-top-run",
       "api-top-configure",
@@ -56,6 +64,11 @@
     "CcFragment api": [
       "doc4",
       "doc5"
+    ]
+  },
+  "release-logs":{
+    "发布记录":[
+      "release-v1-1-26"
     ]
   }
 }

@@ -28,6 +28,7 @@ const siteConfig = {
   // baseUrl: 'https://concentjs.github.io/concent-site', // Base URL for your project */
   url: 'https://concentjs.github.io/concent-site', // Your website URL
   baseUrl: '/concent-site/', // Base URL for your project */
+  // baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
@@ -41,9 +42,9 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
+    {doc: 'doc-intro-what-is-concent', label: 'Docs'},
     {doc: 'api-top-run', label: 'API'},
-    {doc: 'doc2', label: 'API2'},
+    {doc: 'release-v1-1-26', label: '发布日志'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
   ],

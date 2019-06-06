@@ -5,7 +5,7 @@ sidebar_label: register
 ---
 
 ___
-`register`函数复杂将用户的普通`react类`注册成为`cc类`，变成`cc类`后，你的组件实例将获得更多的能力，具体请参考实例api章节
+`register`函数负责将用户的普通`react类`注册成为`cc类`，变成`cc类`后，你的组件实例将获得更多的能力，具体请参考实例api章节
 
 ## 函数签名定义
 ```
@@ -104,7 +104,7 @@ class Foo extends Component{
   }
 }
 ```
-> 如果注册成为cc类时不指定模块，将被默认属于`$$default`模块，所以如果这个类不属于任何模块，但是同时观察和共享其他多个模块的key变化，请使用[connect](docs/api-top-connect)替代
+> 如果注册成为cc类时不指定模块，将被默认属于`$$default`模块，所以如果这个类不属于任何模块，但是同时观察和共享其他多个模块的key变化，请使用[connect](api-top-connect)替代
 
 ## setState
 成为cc类后，setState将得到增强，你的调用方式和原来一样，只是扩展了2个参数

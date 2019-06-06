@@ -1,7 +1,7 @@
 ---
 id: api-module-dispatch
 title: reducer函数参数列表里的dispatch
-sidebar_label: dispatch
+sidebar_label: $$dispatch
 ---
 
 reducer函数参数列表里解构出的dispatch句柄方便用户调用其他reducer函数，方便用户将业务逻辑解耦为不同的reducer函数后，可以自由组合调用.
