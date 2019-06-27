@@ -86,6 +86,7 @@ run(
 ```
 
 ## 最佳实践
+### 定义各个子模块
 通常在大型的工程里，我们将模块拆分为一个个独立的文件，更有利于项目维护和理解
 ```
 |_models
@@ -103,9 +104,11 @@ run(
     |_index.js
 ```
 然后再把各个文件导出为一个个模块model在交给run函数，run函数封装在一个名为`run-cc.js`的脚本
+<br />
+- state文件
 
 ```
-//code in global/state.js
+//code in models/global/state.js
 export getInitialState = ()=>{
   return {
     theme:'red'
@@ -115,18 +118,44 @@ export getInitialState = ()=>{
 export default getInitialState();
 ```
 > 通常都建议在state里放一个getInitialState函数暴露出去，方便做状态清理之用
+- reducer文件
 
 ```
-//code in global/reducer.js
-export function setTheme({payload:theme}){
+//code in models/global/reducer.js
+export function setTheme(theme){
   return {theme}
 }
 
-export async function uploadTheme({payload:theme}){
+export async function uploadTheme(theme){
   await api.uploadTheme(theme);
   return {theme}
 }
 ```
+- watch文件<br />
+>这里面定义的是模块级别的watch函数，如果需要定义类级别的watch，可以在class里重写`$$watch`
+```
+//code in models/global/watch.js
+export function theme(newVal, oldVal){
+  //做一些其他的异步操作
+}
+```
+- computed文件
+>这里面定义的是模块级别的computed函数，如果需要定义类级别的watch，可以在class里重写`$$computed`
+```
+//code in models/global/computed.js
+export function theme(newVal, oldVal){
+  //做一些其他的异步操作
+}
+```
+- init文件
+```
+//code in models/global/init.js
+export default async function(){
+  const data = await api.getData();
+  return data;
+}
+```
+
 app顶部引入改脚本
 ```
 import './run-cc';

@@ -10,13 +10,28 @@ dispatch函数返回一个Promise对象，让你的dispatch调用可以串行执
 ## 函数签名定义
 
 ```
-dispatch:(routeDescriptor:string, payload?:object, delay?:number, identity?:string)=>Promise<object>
-dispatch:({type:string, module?:string, reducerModule?:string, payload?:object, delay?:number, identity?:string})=>Promise<object>
+dispatch:(
+  typeDescriptor:string,
+  payload?:object, 
+  delay?:number, 
+  identity?:string
+)=>Promise<object>
+
+dispatch:(
+  action:{
+    type:string, 
+    module?:string, 
+    reducerModule?:string, 
+    payload?:object, 
+    delay?:number, 
+    identity?:string
+  }
+)=>Promise<object>
 ```
 
 ## 使用`type`调用
-大多数场景，推荐使用基于`routeDescriptor`直接调用reducer函数，dispatch句柄暗含了调用方的上下文（所属模块），
-> 所以通常情况下`routeDescriptor`可以等同于`type`，concent会自动命中这个模块的命名为type的reducer函数去执行
+大多数场景，推荐使用基于`typeDescriptor`直接调用reducer函数，dispatch句柄暗含了调用方的上下文（所属模块），
+> 所以通常情况下`typeDescriptor`可以等同于`type`，concent会自动命中这个模块的命名为type的reducer函数去执行
 ```
 // code in foo/reducer.js
 

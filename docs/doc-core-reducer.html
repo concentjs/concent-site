@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>reducer · concent</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;hr&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="reducer · concent"/><meta property="og:type" content="website"/><meta property="og:url" content="https://concentjs.github.io/concent-site/concent-site/"/><meta property="og:description" content="&lt;hr&gt;
+"/><meta property="og:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/concent-site/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://concentjs.github.io/concent-site/concent-site/blog/atom.xml" title="concent Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://concentjs.github.io/concent-site/concent-site/blog/feed.xml" title="concent Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/concent-site/css/main.css"/><script src="/concent-site/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/concent-site/"><img class="logo" src="/concent-site/img/favicon.ico" alt="concent"/><h2 class="headerTitleWithLogo">concent</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/concent-site/docs/doc-intro-what-is-concent" target="_self">Docs</a></li><li class=""><a href="/concent-site/docs/api-top-run" target="_self">API</a></li><li class=""><a href="/concent-site/docs/release-v1-1-26" target="_self">发布日志</a></li><li class=""><a href="/concent-site/help" target="_self">Help</a></li><li class=""><a href="/concent-site/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>核心概念与功能</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">序言</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-intro-what-is-concent">concent是什么</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-intro-compare-others">对比redux和mobx</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">新手指南</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-quick-start">快速开始</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-progressive-dev">渐进式的开发</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-standard-dev">标准化的开发</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">核心概念与功能</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-module">模块</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-component">组件</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/concent-site/docs/doc-core-reducer">reducer</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-debug">调试</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">生态与周边</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-eco-router">react-router-concent</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-eco-loading">concent-loading</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">精彩示例</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-case-antd-pro">concent-antd-pro</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">reducer</h1></header><article><div><span><hr>
+<h2><a class="anchor" aria-hidden="true" id="reducer是什么"></a><a href="#reducer是什么" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>reducer是什么</h2>
+<p>我们先复习一下<code>concent</code>的状态广播流程</p>
+<p><img src="/concent-site/img/cc-core.png" alt="触发流程"></p>
+<p>从上可以看出，reducer的定位就是用于返回一个新的片段状态，通常我们写reducer的目的就是要把处理数据的业务逻辑和更新视图的渲染逻辑彻底分来开来，达到ui与业务的彻底解耦。<br/></p>
+<p>
+当我们的工程越来越大的时候，这样关注点分离的组织代码方式有利于后期的维护、迭代甚至重构和升级。<br/>
+业务逻辑会越来越厚但是越来越下沉和稳定，ui逻辑会越变越频繁，
+</p>
+<p>当我们的工程越来越大的时候，这样关注点分离的组织代码方式有利于后期的维护、迭代甚至重构和升级。<br/>
+业务逻辑会越来越厚但是越来越下沉和稳定，ui逻辑会越变越频繁，
+reducer函数用于书写用户的业务逻辑并返回一个新的片段状态，由<code>dispatch</code>句柄调用并触发，<code>concent</code>会把reducer函数返回的片段状态视为一个新提交的状态去处理，从用户触发reducer函数到视图被更新会经历以下流程<br />
+1 用户调用<code>dispatch</code>函数去触发<code>concent</code>调用<code>reducer</code>函数<br />
+2 <code>concent</code>找到对应的<code>reducer</code>函数并触发其执行，并收到<code>reducer</code>函数提交的新的片段状态<br />
+3 <code>concent</code>分析<code>reducer</code>提交的新的片段状态，存储到<code>store</code><br />
+4 找到关心这份片段状态的其他<code>cc实例</code>，并将其分发到这些实例上触发它们的渲染<br /></p>
+<p>从上面的流程图里，我们可以针对<code>dispatch</code>函数总结为如下流程</p>
+<pre><code class="hljs">dispatch 
+    <span class="hljs-string">|</span>
+    <span class="hljs-string">|---trigger---&gt; reducer</span>
+                        <span class="hljs-string">|</span>
+                        <span class="hljs-string">|---commit new partialState ---&gt; cc core</span>
+                                                            <span class="hljs-string">|</span>
+                                                            <span class="hljs-string">|---save to store---&gt; finder</span>
+                                                                                      <span class="hljs-string">|</span>
+                                                                                      <span class="hljs-string">|</span>
+                                                    ins1,ins2... &lt;--- broadcast to ---<span class="hljs-string">|</span>
+
+
+</code></pre>
+<p>定义上来说，<code>concent</code>里的<code>reducer</code>函数和<code>redux</code>里的<code>reducer</code>函数的区别很大，使用体验也会比<code>redux</code>要好很多</p>
+<h2><a class="anchor" aria-hidden="true" id="相同点"></a><a href="#相同点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>相同点</h2>
+<p>我们先列出以下几个主要的相同点</p>
+<ul>
+<li>都需要<code>dispatch</code>来触发</li>
+<li>都会返回一个新的转态来触发渲染</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="差异点"></a><a href="#差异点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>差异点</h2>
+<p>差异点如下：</p>
+<ul>
+<li><code>redux</code>的reducer函数是纯函数，<code>concent</code>的reducer函数是纯函数可以是任意的函数</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-comment">// code in foo/reducer.js</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateF1</span>(<span class="hljs-params"></span>)</span>{
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uploadF1</span>(<span class="hljs-params"></span>)</span>{
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">trackF1</span>(<span class="hljs-params"></span>)</span>{  
+}
+
+</code></pre>
+<ul>
+<li><code>redux</code>的需要借助<code>saga</code>等辅助模块来写副作用，<code>concent</code>的reducer函数更符合编程体验，对比<code>redux</code>的<code>reducer</code>或者其他<code>redux wrapper</code>（dva, rematch...）的<code>reducer</code>，<code>concent</code>提供以下巨大的差异性体验</li>
+</ul>
+<blockquote>
+<p>1 书写一个function 就是纯函数<br/>
+2 书写一个async function 或者 generator 就是副作用函数<br/>
+3 任何类型的函数返回状态就会触发视图更新<br/>
+4 函数之间可以相互组合调用，并且直接基于函数签名调用（注意避免死循环）<br/>
+5 链式调用的reducer可以合并为一次状态更新操作提交给<code>concent</code><br/></p>
+</blockquote>
+<pre><code class="hljs"><span class="hljs-comment">// 推荐把reducer独立的放置在一个文件中，这样reducer函数件可以直接基于函数签名调用</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateF1</span>(<span class="hljs-params">f1</span>)</span>{
+  <span class="hljs-keyword">return</span> {f1}
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleF1Change</span>(<span class="hljs-params">payload, moduleState, ctx</span>)</span>{
+  <span class="hljs-keyword">await</span> api.uploadF1();
+
+  <span class="hljs-keyword">return</span> {<span class="hljs-attr">f1</span>:payload};
+  <span class="hljs-comment">// or ctx.dispatch(updateF1, payload);</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params">payload, moduleState, ctx</span>)</span>{
+  <span class="hljs-comment">//code here</span>
+  <span class="hljs-keyword">await</span> ctx.dispatch(handleF1Change, payload);
+
+  <span class="hljs-comment">// or await ctx.dispatch('handleF1Change', payload)</span>
+  <span class="hljs-comment">//code here</span>
+
+  <span class="hljs-keyword">return</span> {<span class="hljs-attr">f2</span>:<span class="hljs-string">'to be committed'</span>}
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f3</span>(<span class="hljs-params">payload, moduleState, ctx</span>)</span>{
+  <span class="hljs-keyword">await</span> api.domeSomething();
+  <span class="hljs-keyword">await</span> ctx.dispatch(f2);
+  <span class="hljs-keyword">return</span> {<span class="hljs-attr">f3</span>:<span class="hljs-string">'f3 to be committed'</span>};
+}
+
+</code></pre>
+<blockquote>
+<p>关于链式调用的性能优化</p>
+</blockquote>
+<pre><code class="hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
+  changeF1 = ()=&gt;{
+    <span class="hljs-keyword">this</span>.$$dispatch(<span class="hljs-symbol">'f</span>3');
+    <span class="hljs-comment">// 调用f3 --&gt; 调用f2 --&gt; 调用handleF1Change</span>
+    <span class="hljs-comment">//handleF1Change 返回 {f1:payload} 触发更新</span>
+    <span class="hljs-comment">//f2 返回 {f2:'to be committed'} 触发更新</span>
+    <span class="hljs-comment">//f3 返回 {f3:'f3 to be committed'} 触发更新</span>
+
+    <span class="hljs-keyword">this</span>.$$lazyDispatch(<span class="hljs-symbol">'f</span>3');
+    <span class="hljs-comment">//lazyDispatch会将调用链上属于同一个模块的所有状态暂存起来</span>
+    <span class="hljs-comment">//直到根函数调用结束(这里即是f3)</span>
+    <span class="hljs-comment">//一次性合并为  {f1:payload, f2:'to be committed', f3:'f3 to be committed'}</span>
+    <span class="hljs-comment">//再提交给concent，触发一次更新!</span>
+  }
+}
+</code></pre>
+<blockquote>
+<p>大多数时候，基于dispatch调用触发实时更新是没有问题的，但是提供的<code>lazyDispatch</code>特性，能够让用户既能够保持<code>reducer</code>拥有最小的业务逻辑单元和更新粒度，又能够对性能有极度追求时避免不必要的多次更新</p>
+</blockquote>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/doc-core-component"><span class="arrow-prev">← </span><span>组件</span></a><a class="docs-next button" href="/concent-site/docs/doc-core-debug"><span>调试</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#reducer是什么">reducer是什么</a></li><li><a href="#相同点">相同点</a></li><li><a href="#差异点">差异点</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/concent-site/" class="nav-home"><img src="/concent-site/img/favicon.ico" alt="concent" width="66" height="58"/></a><div><h5>Docs</h5><a href="/concent-site/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/concent-site/docs/en/doc2.html">Guides (or other categories)</a><a href="/concent-site/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/concent-site/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/concent-site/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/concent-site/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

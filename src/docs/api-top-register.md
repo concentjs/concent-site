@@ -33,9 +33,9 @@ register(
 * option.storedStateKeys
 > 组件销毁后，如果希望挂载回来时状态能够恢复回来，设置想要存储的key
 >>理解这一点要特别注意，class里的stateKey分为4类<br/>
->>* sharedStateKey 指定的观察所属模块的key
->>* globalStateKey 指定的观察的global模块里的key
->>* storedStateKeys 表示不属于sharedStateKey和storedStateKeys，但是希望被存储的key
+>>* sharedStateKeys 从所属模块状态的所有key里，挑选要观察和共享的key
+>>* globalStateKeys 从`$$global`模块状态的所有key里，挑选要观察和共享的key
+>>* storedStateKeys 表示不属于sharedStateKeys和storedStateKeys，但是希望被存储的key
 >>* temporaryStateKeys 则表示随着组件卸载就丢失状态的key 
 ---
 所以需要理解实例里的state是合成出来的，由global、module、self 三部分state合成得出
@@ -85,7 +85,7 @@ class Foo extends Component{
   }
 }
 ```
-可以看到f1尽管在constructor里申明了值为100，theme值为'black',但是打印的时候f1的值和theme的值将从`store`里恢复为1和'red'，这是因为我们标记了sharedStateKeys和globalStateKeys的结果
+可以看到f1尽管在constructor里申明了值为100，theme值为'black',但是打印的时候f1的值和theme的值将从`store`里恢复为1和'red'，这是因为我们标记了sharedStateKeys和globalStateKeys而导致的结果
 
 ### 观察和共享其他模块的key变化
 每一个cc类除了能够观察和共享自己所属模块的key变化，也能够观察和共享其他模块的key变化，其他模块的将从`this.$$connectedState`里获取

@@ -12,6 +12,7 @@
     "核心概念与功能":[
       "doc-core-module",
       "doc-core-component",
+      "doc-core-reducer",
       "doc-core-debug"
     ],
     "生态与周边": [
@@ -64,6 +65,10 @@
     "CcFragment api": [
       "doc4",
       "doc5"
+    ],
+    "通用api": [
+      "api-common-dispatch",
+      "api-common-on"
     ]
   },
   "release-logs":{
