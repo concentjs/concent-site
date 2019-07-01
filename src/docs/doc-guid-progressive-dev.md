@@ -103,7 +103,7 @@ const AwardPanel_ = register(
   {
     module:'award', //指定该组件属于award模块
     //共享award模块的所有状态变化，等同于写为 ['awardList','bonus','displayBonus']
-    sharedStateKeys:'*',
+    sharedStateKeys:'*',//不定义的话，就是默认观察所有key变化
   }
 )(AwardPanel);
 ```
@@ -250,6 +250,20 @@ const setup = ctx => {
     return () => ctx.dispatch('track', 'user close award panel')
   }, []);
 
+  /** 也支持函数式写法
+    ctx.defineWatch(ctx=>{
+      return {...}
+    });
+   */
+  ctx.defineWatch({
+    //表示观察 所属模块的key inputCode
+    'inputCode':(nevVal)=> ctx.setModuleState({msg:'inputCode 变为 '+nevVal }),
+  });
+  ctx.defineComputed({
+    //表示计算 所属模块的key inputCode
+    'inputCode':(newVal)=>`${newVal}_${Date.now()}`
+  });
+
   //定义handleStrChange方法
   const handleStrChange = (e) => {
     const inputCode = e.currentTarget.value;
@@ -272,14 +286,16 @@ const setup = ctx => {
 ```
 const mapProps = ctx => {
   //将bonus的计算结果取出
-  const displayBonus = ctx.connectedComputed.award.bonus;
+  const displayBonus = ctx.moduleComputed.bonus;
   //将settings里的 handleStrChange方法、init方法 取出
   const { handleStrChange, init } = ctx.settings;
   //将inputCode取出
-  const { inputCode, awardList, mask } = ctx.connectedState.award;
+  const { msg, inputCode, awardList, mask } = ctx.moduleState;
+
+  const { inputCode:cuInputCode } = ctx.refComputed;
 
   //该返回结果会映射到组件的props上
-  return { init, mask, inputCode, awardList, displayBonus, handleStrChange }
+  return { msg, cuInputCode, init, mask, inputCode, awardList, displayBonus, handleStrChange }
 }
 ```
 ### 定义函数组件
@@ -307,7 +323,7 @@ const AwardPanelUI = (props) => {
 const AwardPanel = connectDumb({
   setup, //传入预先定义好的setup
   mapProps, //传入预先定义好的mapProps
-  connect:{award:'*'}, //将AwardPanelUI连接到award模块，观察该模块的所有key变化
+  module:'award', //将AwardPanelUI连接到award模块，默认观察该模块的所有key变化
 })(AwardPanelUI);
 ```
 ### 升级完毕

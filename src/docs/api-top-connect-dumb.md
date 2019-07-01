@@ -9,40 +9,92 @@ ___
 ## 函数签名定义
 ```
 connectDumb: ({
+  module?:string,
+  sharedStateKeys?:string[] | '*',
   connect?:ConnectSpec,
-  mapState::(connectedState, props)
-})=> (fn:(props:{state:object, cc:CcFnProvider})=>ReactDom) => wrappedComponent:CcFragment
+  setup: (ctx)=>settings:object,
+  mapState:(ctx)=> mappedState:object
+})=> (fn:(props:{mappedState:object, ctx:CcFragmentCtx})=>ReactDom) => wrappedComponent:CcFragment
+
+connectDumb: ({
+  module?:string,
+  sharedStateKeys?:string[] | '*',
+  connect?:ConnectSpec,
+  setup: (ctx)=>settings:object,
+  mapProps:(ctx)=> mappedProps:object
+})=> (fn:(props:MappedProps)=>ReactDom) => wrappedComponent:CcFragment
 ```
 
 ## 参数解释
+* module<br/>
+`CcFragment`实例所属的模块
+* sharedStateKeys<br/>
+`CcFragment`实例观察模块里的哪些key值变化，不设置此值的话，默认是`*`，即所属模块的任意key值发生变化都会触发改实例渲染
 * connect<br/>
-要连接的模块
+要连接的模块，除了指定实例的专属模块，还可以通过指定`connect`连接其他模块
 * mapState<br/>
 提供的回调，让用户可以挑选`connectedState`做2次计算与封装
+> 注意使用mapState时，包裹的函数的参数列表是
+```
+const UIForMapState = ({mappedState, ctx})=>{
+  //mappedState及是mapState函数返回的结果
+  //ctx即实例的上下文
+}
+```
+* mapProps<br/>
+提供的回调，让用户可以挑选`connectedState`做2次计算与封装
+> 注意使用mapProps时，包裹的函数的参数列表是mappedProps，区别于`mapState`，`mapProps`让函数组件更纯粹，保持对ctx上下文不可见
+```
+const UIForMapProps = (mappedProps)=>{
+  //mappedProps即是mapProps函数返回的结果
+}
+```
 
 ## 如何使用
+[在线示例](https://stackblitz.com/edit/ccapi-top-connect-dumb-1)
+### 使用mapState对所有的状态的做二次处理
 ```
 import {connectDumb} from 'concent';
 
-const MyDumb = ({state, cc})=>{
-  const [localF1, f1Setter] =cc.hook.useState('');
+const MyDumb = ({ mappedState, ctx }) => {
+  const [localF1, f1Setter] = ctx.hook.useState('');
   return (
-    <div>
-      <p>f1: {state.f1}</p>
-      <p>f2: {state.f2}</p>
+    <div style={st1}>
+      <p>f1: {mappedState.f1}</p>
+      <p>f2: {mappedState.f2}</p>
       <br />
       <input placeholder="输入临时f1" value={localF1} onChange={f1Setter} />
-      <button onClick={cc.sync('foo/f1', localF1)}>确认改变foo模块的f1</button>
+      <button onClick={ctx.sync('f1', localF1)}>确认改变foo模块的f1</button>
+      <button onClick={() => f1Setter('')}>清除本地f1值</button>
     </div>
   );
 }
-
 const SmartDumb = connectDumb({
-  connect:{foo:'*'},
-  mapState(connectedState){
-    return {...connectedState.foo};
+  module: 'foo',
+  mapState(ctx) {
+    return ctx.moduleState;
   }
 })(MyDumb);
+```
+### 使用mapProps生成UI的props参数
+```
+const MyDumb2 = ({ fooF1, fooF2, barB1 }) => {
+  return (
+    <div style={st1}>
+      <p>f1: {fooF1}</p>
+      <p>f2: {fooF2}</p>
+      <p>b1: {barB1}</p>
+    </div>
+  );
+}
+const SmartDumb2 = connectDumb({
+  module: 'foo',
+  connect: { bar: '*' },//连接bar模块，观察bar的所有key值变化
+  mapProps(ctx) {
+    const { moduleState, connectedState: { bar: barState } } = ctx;
+    return { fooF1: moduleState.f1, fooF2: moduleState.f2, barB1: barState.b1 };
+  }
+})(MyDumb2);
 ```
 
 ## cc工具函数

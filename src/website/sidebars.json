@@ -43,24 +43,29 @@
       "api-top-execute",
       "api-top-execute-all"
     ],
-    "模块api": [
-      "api-module-dispatch",
-      "api-module-effect"
+    "通用类型解释": [
+      "api-type-reducer-ctx"
     ],
     "类api": [
       "api-class-watch",
       "api-class-computed",
       "api-class-on-url-changed",
-      "api-class-cache",
-      "api-class-before-set-state",
-      "api-class-before-broadcast"
+      "api-class-cache"
     ],
     "实例api": [
       "api-ref-dispatch",
-      "api-ref-effect",
-      "api-ref-xeffect",
       "api-ref-invoke",
-      "api-ref-xinvoke"
+      "api-ref-set-state",
+      "api-ref-set-module-state",
+      "api-ref-set-global-state",
+      "api-ref-sync",
+      "api-ref-sync-bool",
+      "api-ref-sync-int",
+      "api-ref-set",
+      "api-ref-set-bool",
+      "api-ref-emit",
+      "api-ref-on",
+      "api-ref-off"
     ],
     "CcFragment api": [
       "doc4",

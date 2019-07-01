@@ -14,20 +14,7 @@ run(
   [module:string]:{
     state:object,
     reducer?:{
-      [fnName:string]:(
-        {
-          module:string,//调用reducer的cc实例所属的模块
-          payload:object,//调用reducer的cc实例传递的payload对象
-          dispatch:(type:string, payload?:object, delay?:number, identity?:string)=>Promise<object>,
-          state:object,//cc实例的state
-          moduleState:object,//cc实例所属模块的state
-          connectedState:object,//cc实例连接上的其他模块的state
-          effect:(module:string, userFn:function, ...args:[])=>Promise<object>,
-          xeffect:(module:string, userFn:function, ...args:[])=>Promise<object>,
-          invoke:(userFn:function, ...args:[])=>Promise<object>,
-          xinvoke:(userFn:function, ...args:[])=>Promise<object>,
-        }
-      )=>object
+      [fnName:string]: PartialStateGenerationFunction,
     },
     watch?:{
       [stateKey:string]:(newValue:any, oldValue:any, moduleState:object):boolean|undefined=>{}
