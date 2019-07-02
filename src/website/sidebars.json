@@ -44,7 +44,9 @@
       "api-top-execute-all"
     ],
     "通用类型解释": [
-      "api-type-reducer-ctx"
+      "api-type-handler-ctx",
+      "api-type-ccfragment-ctx",
+      "api-type-watch-fn"
     ],
     "类api": [
       "api-class-watch",

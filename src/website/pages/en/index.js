@@ -91,12 +91,17 @@ class HomeSplash extends React.Component {
             >
               api文档
             </Button>
-
             <Button
               target="blink"
               href="https://stackblitz.com/edit/cc-simple-counter"
             >
               试一试counter
+            </Button>
+            <Button
+              target="blink"
+              href="https://stackblitz.com/edit/cc-multi-ways-to-wirte-code"
+            >
+              渐进是重构
             </Button>
           </PromoSection>
         </div>
