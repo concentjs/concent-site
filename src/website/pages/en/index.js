@@ -101,7 +101,7 @@ class HomeSplash extends React.Component {
               target="blink"
               href="https://stackblitz.com/edit/cc-multi-ways-to-wirte-code"
             >
-              渐进是重构
+              渐进式重构
             </Button>
           </PromoSection>
         </div>
