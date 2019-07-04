@@ -129,6 +129,21 @@ class Index extends React.Component {
       </Container>
     );
 
+    const MyBlock = ({ title, content, imgSrc }) => (
+      <div style={{ margin: '0 15%', textAlign: 'center' }}>
+        <div style={{ display: 'inline-block', padding: '66px 28px', width: '30%', verticalAlign: 'top' }}>
+          <h2 style={{ color: siteConfig.colors.primaryColor }}>{title}</h2>
+          <p style={{ textAlign: 'left' }}>{content}</p>
+        </div>
+        <div style={{
+          display: 'inline-block', width: '70%',
+        }}>
+          <img style={{ width: '100%'}} src={`${baseUrl}baseimg/blockHeader.png`} />
+          <img style={{ width: '100%', transform:'translateY(-6px)'}} src={imgSrc} />
+        </div>
+      </div>
+    );
+
     const FeatureCallout = () => (
       <div
         className="productShowcaseSection paddingBottom"
@@ -154,22 +169,6 @@ class Index extends React.Component {
       </div>
     );
 
-    const TryOut = () => (
-      <Block id="try">
-        {[
-          {
-            content:
-              "To make your landing page more attractive, use illustrations! Check out " +
-              "[**unDraw**](https://undraw.co/) which provides you with customizable illustrations which are free to use. " +
-              "The illustrations you see on this page are from unDraw.",
-            image: `${baseUrl}img/undraw_code_review.svg`,
-            imageAlign: "left",
-            title: "Wonderful SVG Illustrations"
-          }
-        ]}
-      </Block>
-    );
-
     const Description = () => (
       <Block background="dark">
         {[
@@ -184,14 +183,25 @@ class Index extends React.Component {
       </Block>
     );
 
-    const LearnHow = () => (
-      <Block background="light">
+    const ZeroCostUse = () => (
+      <MyBlock
+        title="0入侵成本接入"
+        content="基于setState拦截，和引用定位的运行机制，concent和react两者之间是完全平等的关系，传统的react代码可以实现0改造成本的接入concent，就享受到模块化的状态管理好处。"
+        imgSrc={`${baseUrl}gif/cc-zero-cost.gif`}
+      />
+    )
+
+    const TryOut = () => (
+      <Block id="try">
         {[
           {
-            content: `<a href="https://github.com/fantasticsoul/rcc-antd-pro">and-design-pro-powered-by-concent</a>`,
-            image: `${baseUrl}img/undraw_youtube_tutorial.svg`,
-            imageAlign: "right",
-            title: "精彩工程实例"
+            content:
+              "To make your landing page more attractive, use illustrations! Check out " +
+              "[**unDraw**](https://undraw.co/) which provides you with customizable illustrations which are free to use. " +
+              "The illustrations you see on this page are from unDraw.",
+            image: `${baseUrl}img/undraw_code_review.svg`,
+            imageAlign: "left",
+            title: "Wonderful SVG Illustrations"
           }
         ]}
       </Block>
@@ -209,27 +219,27 @@ class Index extends React.Component {
             title: "0入侵成本接入"
           },
           {
+            title: "核心api少且简单，功能强大",
             content:
               "顶层的核心api只有2个：run、register，run用于载入你的store定义，register负责将你的react组件注册为cc组件",
             image: `${baseUrl}img/icon/01.png`,
             imageAlign: "top",
-            title: "核心api少且简单，功能强大"
           },
           {
+            title: "提供全局模块化的单一数据源",
             content:
-              "事实上concent的store更加智能与实用，允许用户按需定义state、reducer、watch、computed、init。" +
-              "让你的ui视图与业务逻辑彻底解耦，代码组织结构同时兼顾了优雅与简单",
+              "concent的模块由state、reducer、watch、computed和init 5个部分组成，允许你按需定义，" +
+              "让你的ui视图与业务逻辑彻底解耦，代码组织结构同时兼顾优雅与简单",
             image: `${baseUrl}img/icon/02.png`,
             imageAlign: "top",
-            title: "提供全局模块化的单一数据源"
           },
           {
+            title: "状态的连接方式多样，消费粒度灵活",
             content:
-              "每一个cc类可以观察自己所属模块的指定key的状态变化，所有的cc类都可以观察全局状态的指定key变化，" +
-              "不仅如此，用户还可以通过定义connect观察其他任意模块的任意key的状态变化",
+              "每一个cc类可以观察自己所属模块的指定key的状态变化，" +
+              "同时也可以通过定义connect观察其他任意模块的任意key的状态变化",
             image: `${baseUrl}img/icon/03.png`,
             imageAlign: "top",
-            title: "状态的连接方式多样，消费粒度灵活"
           },
           {
             content:
@@ -247,16 +257,15 @@ class Index extends React.Component {
             title: "对组件扩展了很多强大的特性"
           },
           {
+            title: "更友好的函数式组件支持",
             content:
-              "CcFragment拥有与cc类同样的能力，允许你快速连接多个模块的状态，满足你写function组件的需求，同时CcFragment内置了与react保持100%一致用法的hook," +
-              "用于管理组件局部状态",
+              "concent提供CcFragment，让你临时的插入一个视图片断来消费多个模块的数据，还提供connectDumb函数包裹你的函数组件连接store",
             image: `${baseUrl}img/icon/06.png`,
             imageAlign: "top",
-            title: "hook&&CcFragment"
           },
           {
             content:
-              "concent基于引用定位和状态广播，支持任意粒度的状态订阅，渲染效率出众",
+              "concent基于引用定位和状态广播，支持任意粒度的状态变更观察，渲染效率出众",
             image: `${baseUrl}img/icon/07.png`,
             imageAlign: "top",
             title: "渲染性能出众"
@@ -330,7 +339,7 @@ class Index extends React.Component {
         <div className="mainContainer">
           <Features />
           <FeatureCallout />
-          <LearnHow />
+          <ZeroCostUse />
           <TryOut />
           <Description />
           <Showcase />
