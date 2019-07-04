@@ -103,9 +103,11 @@ const AwardPanel_ = register(
   {
     module:'award', //指定该组件属于award模块
     //共享award模块的所有状态变化，等同于写为 ['awardList','bonus','displayBonus']
-    sharedStateKeys:'*',//不定义的话，就是默认观察所有key变化
+    watchedKeys:'*',//不定义的话，就是默认观察所有key变化
   }
 )(AwardPanel);
+//可以简写为
+const AwardPanel_ = register('AwardPanel', 'award');
 ```
 >运行起来后，`concent`将整个`store`绑定在`window.sss`下(后期会提供dev-tool，方便用户可视化的查看store)，用户可以在`console`输入`sss`并回车，就可以查看`concent`的整个`store`数据了
 

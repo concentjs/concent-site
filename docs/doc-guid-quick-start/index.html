@@ -126,7 +126,9 @@ run({
   }
 } 
 <span class="hljs-comment">/** 注册为到welcomeModule模块的组件 */</span>
-<span class="hljs-keyword">const</span> HelloConcent = register(<span class="hljs-string">'HelloConcent'</span>,{module:<span class="hljs-string">'welcomeModule'</span>, sharedStateKeys:<span class="hljs-string">'*'</span>})(HelloConcent_)
+<span class="hljs-keyword">const</span> HelloConcent = register(<span class="hljs-string">'HelloConcent'</span>,{module:<span class="hljs-string">'welcomeModule'</span>, watchedKeys:<span class="hljs-string">'*'</span>})(HelloConcent_)
+<span class="hljs-comment">// 简写为</span>
+<span class="hljs-comment">// const HelloConcent = register('HelloConcent','welcomeModule')(HelloConcent_)</span>
 
 
 function App(){
@@ -145,7 +147,7 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById(<span class="hljs-string"
 <p>大多数情况下，<code>concent</code>推荐使用上面例子里的默认的反向继承策略，更少的dom层级意味着更好的渲染性能</p>
 <pre><code class="hljs"><span class="hljs-keyword">const</span> HelloConcent = <span class="hljs-keyword">register</span>(<span class="hljs-string">'HelloConcent'</span>,{
   <span class="hljs-keyword">module</span>:<span class="hljs-string">'welcomeModule'</span>, 
-  sharedStateKeys:<span class="hljs-string">'*'</span>, 
+  watchedKeys:<span class="hljs-string">'*'</span>, 
   isPropsProxy:true, <span class="hljs-comment">//是用属性代理模式</span>
 })(HelloConcent_)
 </code></pre>
@@ -248,7 +250,9 @@ run({
   }
 } 
 /** 祖册为到welcomeModule模块的组件 */
-const HelloConcent = register('HelloConcent',{module:'welcomeModule', sharedStateKeys:'*'})(HelloConcent_)
+const HelloConcent = register('HelloConcent',{module:'welcomeModule', watchedKeys:'*'})(HelloConcent_)
+// 简写为
+// const HelloConcent = register('HelloConcent','welcomeModule')(HelloConcent_)
 </span></code></pre>
 <h3><a class="anchor" aria-hidden="true" id="function组件"></a><a href="#function组件" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>function组件</h3>
 <pre><code class="hljs"><span class="hljs-comment">// &lt;&lt;&lt;------------------- 定义一个function组件 ---------------------</span>

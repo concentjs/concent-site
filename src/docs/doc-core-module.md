@@ -45,7 +45,7 @@ class App extends React.Component{
     )
   }
 }
-const App_ = register('App', {module:'foo', sharedStateKeys:'*'})(App);
+const App_ = register('App', {module:'foo', watchedKeys:'*'})(App);
 ```
 ### 状态合成
  上述示例中，我们并没有在`constructor`里声明过`state`，`render`函数里却直接从`state`里获取到`label`的值，是因为我们将`App`注册到`foo`模块了，`concent`在`componentWillMount`阶段自动将模块的`state`注入到实例上，实际上，你也可以显示的在`constructor`声明其他的状态，这并不妨碍的`concent`的正常运行，`concent`在实例首次`render`将指定模块的状态和用户自定义的状态合成到实例的`state`里。
@@ -68,7 +68,9 @@ const App_ = register('App', {module:'foo', sharedStateKeys:'*'})(App);
     )
   }
 }
-const App_ = register('App', {module:'foo', sharedStateKeys:'*'})(App);
+const App_ = register('App', {module:'foo', watchedKeys:'*'})(App);
+// or
+// const App_ = register('App', 'foo')(App);
  ```
  >render里，我们取到了`label`、`myLabel`两个值，`label`来自于`foo`模块，`myLabel`来自于我们在狗朝气里的自定义值!<br/>
  >如果在我们在构造器里定义`label`值为'see what happen'，render里依然取到的是'hello concent'，`concent`总是会用模块里的状态覆盖掉用户的自定义状态，如果出现同名的key的话。
@@ -112,7 +114,7 @@ class App extends React.Component{
 }
 const App_ = register('App', {
   module:'foo', 
-  sharedStateKeys:'*', 
+  watchedKeys:'*', 
   connect:{bar:'*', baz:'*'}, //连接bar模块和baz模块
 })(App);
 ```
@@ -176,10 +178,10 @@ class App extends React.Component{
     )
   }
 }
-const App_ = register('App', {module:'foo', sharedStateKeys:'*'})(App);
+const App_ = register('App', {module:'foo', watchedKeys:'*'})(App);
 ```
-### 状态共享
-上述演示的古典写法里，除了修改`foo`模块的`label`值，似乎并没有看出其他不同之处，我们仔细看`register`函数里，传入了一个`sharedStateKeys`，正如其名字描述的一样，表示当前concent类的实例将共享`foo`模块的所有`key`的值，既然是共享，那么只要任意一个实例修改了`foo`下的任意`key`的值，那么其他实例都将获得最新的修改值并被触发渲染。
+### 状态变更观察
+上述演示的古典写法里，除了修改`foo`模块的`label`值，似乎并没有看出其他不同之处，我们仔细看`register`函数里，传入了一个`watchedKeys`，正如其名字描述的一样，表示当前concent类的实例将观察`foo`模块的所有`key`的值变化，只要任意一个实例修改了`foo`下的任意`key`的值，那么其他实例都将获得最新的修改值并被触发渲染。
 
 [在线示例](https://stackblitz.com/edit/cc-course-classic-writing-and-state-been-shared?file=index.js)
 ```
@@ -197,7 +199,9 @@ class Foo extends React.Component{
     )
   }
 }
-const Foo_ = register('Foo', {module:'foo', sharedStateKeys:'*'})(Foo);
+const Foo_ = register('Foo', 'foo')(Foo);
+// or
+// const Foo_ = register('Foo', {module:'foo', watchedKeys:'*'})(Foo);
 
 const App = ()=>{
   return (

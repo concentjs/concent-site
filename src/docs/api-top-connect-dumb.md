@@ -10,7 +10,7 @@ ___
 ```
 connectDumb: ({
   module?:string,
-  sharedStateKeys?:string[] | '*',
+  watchedKeys?:string[] | '*',
   connect?:ConnectSpec,
   setup: (ctx)=>settings:object,
   mapState:(ctx)=> mappedState:object
@@ -18,7 +18,7 @@ connectDumb: ({
 
 connectDumb: ({
   module?:string,
-  sharedStateKeys?:string[] | '*',
+  watchedKeys?:string[] | '*',
   connect?:ConnectSpec,
   setup: (ctx)=>settings:object,
   mapProps:(ctx)=> mappedProps:object
@@ -28,7 +28,7 @@ connectDumb: ({
 ## 参数解释
 * module<br/>
 `CcFragment`实例所属的模块
-* sharedStateKeys<br/>
+* watchedKeys<br/>
 `CcFragment`实例观察模块里的哪些key值变化，不设置此值的话，默认是`*`，即所属模块的任意key值发生变化都会触发改实例渲染
 * connect<br/>
 要连接的模块，除了指定实例的专属模块，还可以通过指定`connect`连接其他模块

@@ -55,7 +55,8 @@ configure('foo', fooModule);
 import {register} from 'concent';
 import './model';
 
-@register('PlatFormTable', {module:'platformTable', sharedStateKeys:'*'})
+// @register('PlatFormTable', {module:'platformTable', watchedKeys:'*'})
+@register('PlatFormTable', 'platformTable')
 export default class extends Components{
 
 }

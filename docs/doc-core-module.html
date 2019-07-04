@@ -93,7 +93,7 @@ run({
     )
   }
 }
-const <span class="hljs-type">App_</span> = register(<span class="hljs-symbol">'Ap</span>p', {module:<span class="hljs-symbol">'fo</span>o', sharedStateKeys:'*'})(<span class="hljs-type">App</span>);
+const <span class="hljs-type">App_</span> = register(<span class="hljs-symbol">'Ap</span>p', {module:<span class="hljs-symbol">'fo</span>o', watchedKeys:'*'})(<span class="hljs-type">App</span>);
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="状态合成"></a><a href="#状态合成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>状态合成</h3>
 <p>上述示例中，我们并没有在<code>constructor</code>里声明过<code>state</code>，<code>render</code>函数里却直接从<code>state</code>里获取到<code>label</code>的值，是因为我们将<code>App</code>注册到<code>foo</code>模块了，<code>concent</code>在<code>componentWillMount</code>阶段自动将模块的<code>state</code>注入到实例上，实际上，你也可以显示的在<code>constructor</code>声明其他的状态，这并不妨碍的<code>concent</code>的正常运行，<code>concent</code>在实例首次<code>render</code>将指定模块的状态和用户自定义的状态合成到实例的<code>state</code>里。</p>
@@ -114,7 +114,9 @@ const <span class="hljs-type">App_</span> = register(<span class="hljs-symbol">'
    )
  }
 }
-const <span class="hljs-type">App_</span> = register(<span class="hljs-symbol">'Ap</span>p', {module:<span class="hljs-symbol">'fo</span>o', sharedStateKeys:'*'})(<span class="hljs-type">App</span>);
+const <span class="hljs-type">App_</span> = register(<span class="hljs-symbol">'Ap</span>p', {module:<span class="hljs-symbol">'fo</span>o', watchedKeys:'*'})(<span class="hljs-type">App</span>);
+<span class="hljs-comment">// or</span>
+<span class="hljs-comment">// const App_ = register('App', 'foo')(App);</span>
 </code></pre>
 <blockquote>
 <p>render里，我们取到了<code>label</code>、<code>myLabel</code>两个值，<code>label</code>来自于<code>foo</code>模块，<code>myLabel</code>来自于我们在狗朝气里的自定义值!<br/>
@@ -158,7 +160,7 @@ class App extends React.Component{
 }
 const App_ = register('App', {
   module:'foo', 
-  sharedStateKeys:'*', 
+  watchedKeys:'*', 
   connect:{bar:'*', baz:'*'}, //连接bar模块和baz模块
 })(App);
 </code></pre>
@@ -217,37 +219,39 @@ class App extends React.Component{
     )
   }
 }
-const App_ = register('App', {module:'foo', sharedStateKeys:'*'})(App);
+const App_ = register('App', {module:'foo', watchedKeys:'*'})(App);
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="状态共享"></a><a href="#状态共享" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>状态共享</h3>
-<p>上述演示的古典写法里，除了修改<code>foo</code>模块的<code>label</code>值，似乎并没有看出其他不同之处，我们仔细看<code>register</code>函数里，传入了一个<code>sharedStateKeys</code>，正如其名字描述的一样，表示当前concent类的实例将共享<code>foo</code>模块的所有<code>key</code>的值，既然是共享，那么只要任意一个实例修改了<code>foo</code>下的任意<code>key</code>的值，那么其他实例都将获得最新的修改值并被触发渲染。</p>
+<h3><a class="anchor" aria-hidden="true" id="状态变更观察"></a><a href="#状态变更观察" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>状态变更观察</h3>
+<p>上述演示的古典写法里，除了修改<code>foo</code>模块的<code>label</code>值，似乎并没有看出其他不同之处，我们仔细看<code>register</code>函数里，传入了一个<code>watchedKeys</code>，正如其名字描述的一样，表示当前concent类的实例将观察<code>foo</code>模块的所有<code>key</code>的值变化，只要任意一个实例修改了<code>foo</code>下的任意<code>key</code>的值，那么其他实例都将获得最新的修改值并被触发渲染。</p>
 <p><a href="https://stackblitz.com/edit/cc-course-classic-writing-and-state-been-shared?file=index.js">在线示例</a></p>
 <pre><code class="hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
-  changeLabel = <span class="hljs-function">(<span class="hljs-params">e</span>)=&gt;</span>{
-    <span class="hljs-keyword">this</span>.setState({<span class="hljs-attr">label</span>: e.currentTarget.value});
+  changeLabel = (e)=&gt;{
+    <span class="hljs-keyword">this</span>.setState({label: e.currentTarget.value});
   }
   render(){
-    <span class="hljs-keyword">const</span> label = <span class="hljs-keyword">this</span>.state.label;
+    const label = <span class="hljs-keyword">this</span>.state.label;
     <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        {label}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{label}</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.changeLabel}</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      &lt;div&gt;
+        {label}&lt;br/&gt;
+        &lt;input value={label} onChange={<span class="hljs-keyword">this</span>.changeLabel} /&gt;
+      &lt;/div&gt;
     )
   }
 }
-const Foo_ = register('Foo', {module:'foo', sharedStateKeys:'*'})(Foo);
+const <span class="hljs-type">Foo_</span> = register(<span class="hljs-symbol">'Fo</span>o', <span class="hljs-symbol">'fo</span>o')(<span class="hljs-type">Foo</span>);
+<span class="hljs-comment">// or</span>
+<span class="hljs-comment">// const Foo_ = register('Foo', {module:'foo', watchedKeys:'*'})(Foo);</span>
 
-const App = ()=&gt;{
-  return (
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">Foo</span> /&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">Foo</span> /&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">Foo</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+const <span class="hljs-type">App</span> = ()=&gt;{
+  <span class="hljs-keyword">return</span> (
+    &lt;div&gt;
+      &lt;<span class="hljs-type">Foo</span> /&gt;
+      &lt;<span class="hljs-type">Foo</span> /&gt;
+      &lt;<span class="hljs-type">Foo</span> /&gt;
+    &lt;/div&gt;
   );
 }
-</span></code></pre>
+</code></pre>
 <blockquote>
 <p>以上三个<code>Foo</code>实例，任意一个修改<code>label</code>值，都会同步到其他两个实例上</p>
 </blockquote>
@@ -285,4 +289,4 @@ const App = ()=&gt;{
 <p>对key定义computed后，concent调用这些key的computed函数结算出结果并将结果缓存起来，只有当key再次发生变化时，才会触发重计算</p>
 <pre><code class="hljs">
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/doc-guid-standard-dev"><span class="arrow-prev">← </span><span>标准化的开发</span></a><a class="docs-next button" href="/concent-site/docs/doc-core-component"><span>组件</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#state">state</a><ul class="toc-headings"><li><a href="#状态定义">状态定义</a></li><li><a href="#状态合成">状态合成</a></li><li><a href="#状态连接">状态连接</a></li><li><a href="#状态修改">状态修改</a></li><li><a href="#状态共享">状态共享</a></li></ul></li><li><a href="#reducer">reducer</a></li><li><a href="#watch">watch</a></li><li><a href="#computed">computed</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/doc-guid-standard-dev"><span class="arrow-prev">← </span><span>标准化的开发</span></a><a class="docs-next button" href="/concent-site/docs/doc-core-component"><span>组件</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#state">state</a><ul class="toc-headings"><li><a href="#状态定义">状态定义</a></li><li><a href="#状态合成">状态合成</a></li><li><a href="#状态连接">状态连接</a></li><li><a href="#状态修改">状态修改</a></li><li><a href="#状态变更观察">状态变更观察</a></li></ul></li><li><a href="#reducer">reducer</a></li><li><a href="#watch">watch</a></li><li><a href="#computed">computed</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 Your Name or Your Company Name</section></footer></div></body></html>

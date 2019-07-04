@@ -147,9 +147,11 @@
   {
     <span class="hljs-keyword">module</span>:<span class="hljs-string">'award'</span>, <span class="hljs-comment">//指定该组件属于award模块</span>
     <span class="hljs-comment">//共享award模块的所有状态变化，等同于写为 ['awardList','bonus','displayBonus']</span>
-    sharedStateKeys:<span class="hljs-string">'*'</span>,<span class="hljs-comment">//不定义的话，就是默认观察所有key变化</span>
+    watchedKeys:<span class="hljs-string">'*'</span>,<span class="hljs-comment">//不定义的话，就是默认观察所有key变化</span>
   }
 )(AwardPanel);
+<span class="hljs-comment">//可以简写为</span>
+<span class="hljs-keyword">const</span> AwardPanel_ = <span class="hljs-keyword">register</span>(<span class="hljs-string">'AwardPanel'</span>, <span class="hljs-string">'award'</span>);
 </code></pre>
 <blockquote>
 <p>运行起来后，<code>concent</code>将整个<code>store</code>绑定在<code>window.sss</code>下(后期会提供dev-tool，方便用户可视化的查看store)，用户可以在<code>console</code>输入<code>sss</code>并回车，就可以查看<code>concent</code>的整个<code>store</code>数据了</p>

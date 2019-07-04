@@ -102,7 +102,8 @@ configure(<span class="hljs-string">'foo'</span>, fooModule);
 <span class="hljs-keyword">import</span> {register} from <span class="hljs-symbol">'concen</span>t';
 <span class="hljs-keyword">import</span> './model';
 
-<span class="hljs-meta">@register</span>(<span class="hljs-symbol">'PlatFormTabl</span>e', {module:<span class="hljs-symbol">'platformTabl</span>e', sharedStateKeys:'*'})
+<span class="hljs-comment">// @register('PlatFormTable', {module:'platformTable', watchedKeys:'*'})</span>
+<span class="hljs-meta">@register</span>(<span class="hljs-symbol">'PlatFormTabl</span>e', <span class="hljs-symbol">'platformTabl</span>e')
 export <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Components</span></span>{
 
 }

@@ -81,7 +81,9 @@ class HelloConcent_ extends React.Component{
   }
 } 
 /** 注册为到welcomeModule模块的组件 */
-const HelloConcent = register('HelloConcent',{module:'welcomeModule', sharedStateKeys:'*'})(HelloConcent_)
+const HelloConcent = register('HelloConcent',{module:'welcomeModule', watchedKeys:'*'})(HelloConcent_)
+// 简写为
+// const HelloConcent = register('HelloConcent','welcomeModule')(HelloConcent_)
 
 
 function App(){
@@ -102,7 +104,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ```
 const HelloConcent = register('HelloConcent',{
   module:'welcomeModule', 
-  sharedStateKeys:'*', 
+  watchedKeys:'*', 
   isPropsProxy:true, //是用属性代理模式
 })(HelloConcent_)
 ```
@@ -211,7 +213,9 @@ class HelloConcent_ extends React.Component{
   }
 } 
 /** 祖册为到welcomeModule模块的组件 */
-const HelloConcent = register('HelloConcent',{module:'welcomeModule', sharedStateKeys:'*'})(HelloConcent_)
+const HelloConcent = register('HelloConcent',{module:'welcomeModule', watchedKeys:'*'})(HelloConcent_)
+// 简写为
+// const HelloConcent = register('HelloConcent','welcomeModule')(HelloConcent_)
 ```
 
 ### function组件
