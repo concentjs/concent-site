@@ -28,7 +28,7 @@ register(
 * option.watchedKeys
 > 表示当前cc类的所有实例都关心所属模块的这些key的值变化， 其他任何地方修改了这些key的值，都会触发这些实例的渲染。
 你不设定此项时，默认是`*`，表示该模块的任意key变化都会触发该组件的所有实例渲染，在某些时候，如果只关心其中一部分key的值变化，应该写出具体的watchedKeys定义，避免一些不必要的渲染。
-* option.storedStateKeys
+* option.storedKeys
 > 组件销毁后，如果希望挂载回来时状态能够恢复回来，设置想要存储的key
 >>理解这一点要特别注意，class里的stateKey分为3类<br/>
 >>* watchedKeys 从所属模块状态的所有key里，挑选要观察的key
