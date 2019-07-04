@@ -80,7 +80,7 @@ class A extends Components{
 最大的区别就是，如果Modal没有实例化过，使用写法1会直接先修改了modalB模块里的visible值为true，当你下次再某个地方实例化ModalB的时候，因为其visible已近为true了，当你实例化的时候，就直接打开弹窗了，这不一定是你预期的效果
 
 ### 跨组件间通信时
-`concent`允许你的cc类组件不标记属于任何模块，不设定任何需要观察和共享的key变化，但是这种cc类实例同样具有$$emit&$$on功能，方便你实现组件件通信
+`concent`允许你的cc类组件不标记属于任何模块，不设定任何需要观察的任何key值变化，但是这种cc类实例同样具有$$emit&$$on功能，方便你实现组件件通信
 
 ## console里使用
 打开浏览器console窗口，输入cc.emit即可以console里使用该接口

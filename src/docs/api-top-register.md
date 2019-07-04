@@ -83,14 +83,14 @@ class Foo extends Component{
 ```
 可以看到f1尽管在constructor里申明了值为100, f2为200，但是打印的时候f1的值将从`store`里恢复为1，f2恢复为2,这是因为组件属于`foo`模块，该模块的所有转态都会被合并到state里。
 
-### 观察和共享其他模块的key变化
-每一个cc类除了能够观察和共享自己所属模块的key变化，也能够观察和共享其他模块的key变化，其他模块的将从`this.$$connectedState`里获取
+### 观察其他模块的key变化
+每一个cc类除了能够观察自己所属模块的key值变化，也能够观察其他模块的key值变化，其他模块的将从`this.$$connectedState`里获取
 ```
 import { register } from 'concent';
 @register('Foo', {
   module:'foo', 
   watchedKeys:['f1'], 
-  connect:{bar:'*'}}, //连接到bar模块，观察和共享它的所有key变化，
+  connect:{bar:'*'}}, //连接到bar模块，观察它的所有key值变化，
 )
 class Foo extends Component{
   render(){
@@ -99,7 +99,7 @@ class Foo extends Component{
   }
 }
 ```
-> 如果注册成为cc类时不指定模块，将被默认属于`$$default`模块，所以如果这个类不属于任何模块，但是同时观察和多个模块的key变化，请使用[connect](api-top-connect)替代
+> 如果注册成为cc类时不指定模块，将被默认属于`$$default`模块，所以如果这个类不属于任何模块，但是同时观察和多个模块的key值变化，请使用[connect](api-top-connect)替代
 
 ## setState
 成为cc类后，setState将得到增强，你的调用方式和原来一样，只是扩展了2个参数

@@ -106,7 +106,7 @@ export function updateF1({module, dispatch, payload:f1}){
 ```
 
 ## 设置delay参数
-delay参数单位为ms，表示当前dispatch函数修改了目标模块的状态后，是否延迟广播通知其他同样关心此模块的这些转态的cc实例<br />
+delay参数单位为ms，表示当前dispatch函数修改了目标模块的状态后，是否延迟广播通知其他同样关心此模块的这些状态的cc实例<br />
 默认是0，没有延迟，每一次的状态变更都会实时广播出去
 > 以下写法表示，如果存在有其他关心bar模块的任意一个key `changedKey`、`value`、`module`的cc实例，它们都会在2秒后被触发渲染
 ```
