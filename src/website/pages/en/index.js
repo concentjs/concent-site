@@ -13,6 +13,58 @@ const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
+
+const MyBlock = ({ siteConfig, baseUrl, title, content, imgSrc }) => (
+  <div style={{ margin: '0 15%', textAlign: 'center' }}>
+    <div style={{ display: 'inline-block', padding: '66px 28px', width: '30%', verticalAlign: 'top' }}>
+      <h2 style={{ color: siteConfig.colors.primaryColor }}>{title}</h2>
+      <p style={{ textAlign: 'left' }}>{content}</p>
+    </div>
+    <div style={{
+      display: 'inline-block', width: '70%',
+    }}>
+      <img style={{ width: '100%' }} src={`${baseUrl}baseimg/blockHeader.png`} />
+      <img style={{ width: '100%', transform: 'translateY(-6px)' }} src={`${baseUrl}${imgSrc}`} />
+    </div>
+  </div>
+);
+
+const MyBlock2 = ({ demoUrl, autoPlay=false, siteConfig, baseUrl, title, assetSrc, isBgGray=false }) => {
+  const isVideo = assetSrc.endsWith('.mov');
+  let displayView;
+  if (isVideo) {
+    let autoPlayAttrVal = autoPlay ? 'autoplay':'none';
+    displayView = (
+      <video muted style={{ width: '100%', maxWidth: '720px', transform: 'translateY(-6px)' }} controls="controls" autoPlay={autoPlayAttrVal}>
+        <source src={assetSrc} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    );
+    // <video style={{ width: '100%', maxWidth: '720px', transform: 'translateY(-6px)' }} src={`${baseUrl}${assetSrc}`} />;
+  } else {
+    displayView = <img style={{ width: '100%', maxWidth: '720px', transform: 'translateY(-6px)' }} src={`${baseUrl}${assetSrc}`} />;
+  }
+
+  let demoUrlView = '';
+  if(demoUrl) demoUrlView = <a href={demoUrl} target="blink" >示例地址</a>
+
+  const stBox = { padding: '2px 15%', textAlign: 'center' };
+  let titleColor = siteConfig.colors.primaryColor;
+  if (isBgGray) {
+    // stBox.backgroundColor = '#808080';
+    stBox.backgroundColor = '#f0f0f0';
+    // titleColor = 'white';
+  }
+  return (
+    <div style={stBox}>
+      <h2 style={{ color: titleColor }}>{title}</h2>
+      <img style={{ width: '100%', maxWidth: '720px' }} src={`${baseUrl}baseimg/blockHeader.png`} />
+      {displayView}
+      {demoUrlView}
+    </div>
+  );
+}
+
 class HomeSplash extends React.Component {
   render() {
     const { siteConfig, language = "" } = this.props;
@@ -110,6 +162,7 @@ class HomeSplash extends React.Component {
   }
 }
 
+
 class Index extends React.Component {
   render() {
     const { config: siteConfig, language = "" } = this.props;
@@ -127,21 +180,6 @@ class Index extends React.Component {
           layout={props.layout}
         />
       </Container>
-    );
-
-    const MyBlock = ({ title, content, imgSrc }) => (
-      <div style={{ margin: '0 15%', textAlign: 'center' }}>
-        <div style={{ display: 'inline-block', padding: '66px 28px', width: '30%', verticalAlign: 'top' }}>
-          <h2 style={{ color: siteConfig.colors.primaryColor }}>{title}</h2>
-          <p style={{ textAlign: 'left' }}>{content}</p>
-        </div>
-        <div style={{
-          display: 'inline-block', width: '70%',
-        }}>
-          <img style={{ width: '100%'}} src={`${baseUrl}baseimg/blockHeader.png`} />
-          <img style={{ width: '100%', transform:'translateY(-6px)'}} src={imgSrc} />
-        </div>
-      </div>
     );
 
     const FeatureCallout = () => (
@@ -184,10 +222,26 @@ class Index extends React.Component {
     );
 
     const ZeroCostUse = () => (
-      <MyBlock
-        title="0入侵成本接入"
+      <MyBlock2
+        autoPlay={true}
+        isBgGray={true}
+        baseUrl={baseUrl}
+        siteConfig={siteConfig}
+        title="零入侵成本接入"
         content="基于setState拦截，和引用定位的运行机制，concent和react两者之间是完全平等的关系，传统的react代码可以实现0改造成本的接入concent，就享受到模块化的状态管理好处。"
-        imgSrc={`${baseUrl}gif/cc-zero-cost.gif`}
+        // imgSrc={`gif/cc-zero-cost.gif`}
+        assetSrc={`video/cc-zero-cost.mov`}
+      />
+    )
+
+    const ProgressiveUse = () => (
+      <MyBlock2
+        isBgGray={true}
+        baseUrl={baseUrl}
+        siteConfig={siteConfig}
+        title="渐进式重构，更多有趣的特性，友好的函数组件支持"
+        assetSrc={`video/cc-awesome.mov`}
+        demoUrl="https://stackblitz.com/edit/cc-multi-ways-to-wirte-code"
       />
     )
 
@@ -321,9 +375,9 @@ class Index extends React.Component {
 
       return (
         <div className="productShowcaseSection paddingBottom">
-          <h2>谁在使用?</h2>
+          <h2>谁在使用</h2>
           <p>concent已服务于它们</p>
-          <div className="logos">{showcase}</div>
+          {/* <div className="logos">{showcase}</div> */}
           <div className="more-users">
             <a className="button" href={pageUrl("users.html")}>
               More {siteConfig.title} Users
@@ -340,8 +394,9 @@ class Index extends React.Component {
           <Features />
           <FeatureCallout />
           <ZeroCostUse />
-          <TryOut />
-          <Description />
+          <ProgressiveUse />
+          {/* <TryOut /> */}
+          {/* <Description /> */}
           <Showcase />
         </div>
       </div>
