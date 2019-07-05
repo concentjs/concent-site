@@ -60,6 +60,7 @@ const MyBlock2 = ({ demoUrl, autoPlay=false, siteConfig, baseUrl, title, assetSr
       <h2 style={{ color: titleColor }}>{title}</h2>
       <img style={{ width: '100%', maxWidth: '720px' }} src={`${baseUrl}baseimg/blockHeader.png`} />
       {displayView}
+      <br/>
       {demoUrlView}
     </div>
   );
