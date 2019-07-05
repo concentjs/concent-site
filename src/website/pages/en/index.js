@@ -241,7 +241,7 @@ class Index extends React.Component {
         baseUrl={baseUrl}
         siteConfig={siteConfig}
         title="渐进式重构，更多有趣的特性，友好的函数组件支持"
-        assetSrc={`video/cc-awesome.mov`}
+        assetSrc={`video/cc-demo-video.mov`}
         demoUrl="https://stackblitz.com/edit/cc-multi-ways-to-wirte-code"
       />
     )
