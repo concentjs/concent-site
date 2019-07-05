@@ -174,7 +174,7 @@ const mapProps = ctx =>{
 ```
 
 ## 更加注重使用体验的架构
-将`concent`接入`react`应用是非常轻松和容易的，对于已存在的react应用，不需要你修改现有的react应用任何代码，只需要先将`concent`启动起来，就可以使用了，不需要在顶层包裹`Provider`之类的组件来提供全局上下文，因为启动`concent`之后，`concent`自动就维护着一个自己的全局上下文，所以你可以理解`concent`和`react`应用是一个平行的关系，而非嵌套后者包裹的关系，唯一注意的是在渲染`react`应用之前，优先将`concent`启动就可以了。
+将`concent`接入`react`应用是非常轻松和容易的，对于已存在的react应用，不需要你修改现有的react应用任何代码，只需要先将`concent`启动起来，就可以使用了，不需要在顶层包裹`Provider`之类的组件来提供全局上下文，因为启动`concent`之后，`concent`自动就维护着一个自己的全局上下文，所以你可以理解`concent`和`react`应用是一个平行的关系，而非嵌套或者包裹的关系，唯一注意的是在渲染`react`应用之前，优先将`concent`启动就可以了。
 ![cc-struct](/concent-site/img/cc-struct.png)
 
 ### 分离式的模块配置
