@@ -22,6 +22,7 @@ const users = [
 
 const siteConfig = {
   title: "concent", // Title for your website.
+  tagline: 'power your react',//用于显示document.title
   tagline1: `一个可靠且简单的react状态管理框架`,
   tagline2: `让ui与业务逻辑分离得更优雅、更容易维护与扩展`,
   // url: 'https://github.com/concentjs/concent', // Your website URL
@@ -42,8 +43,8 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: "doc-intro-what-is-concent", label: "Docs" },
-    { doc: "api-top-run", label: "API" },
+    { doc: "doc-intro-what-is-concent", label: "docs" },
+    { doc: "api-top-run", label: "api" },
     { doc: "release-v1-1-26", label: "changelog" },
     { href: "https://github.com/concentjs/concent", label: "github" }
   ],
@@ -77,7 +78,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} concentjs.org`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -94,7 +95,7 @@ const siteConfig = {
 
   // Open Graph and Twitter card images.
   ogImage: "img/undraw_online.svg",
-  twitterImage: "img/undraw_tweetstorm.svg"
+  twitterImage: "img/undraw_tweetstorm.svg",
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
@@ -104,7 +105,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  //   repoUrl: 'https://github.com/facebook/test-site',
+  editUserUrl: 'https://github.com/concentjs/concent-site/edit/master/src/website/siteConfig.js',
 };
 
 module.exports = siteConfig;

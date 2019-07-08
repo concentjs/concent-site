@@ -59,6 +59,7 @@ const MyBlock2 = ({ demoUrl, autoPlay=false, siteConfig, baseUrl, title, assetSr
     <div style={stBox}>
       <h2 style={{ color: titleColor }}>{title}</h2>
       <img style={{ width: '100%', maxWidth: '720px' }} src={`${baseUrl}baseimg/blockHeader.png`} />
+      <br/>
       {displayView}
       <br/>
       {demoUrlView}
@@ -143,12 +144,6 @@ class HomeSplash extends React.Component {
               href="docs/api-top-run"
             >
               api文档
-            </Button>
-            <Button
-              target="blink"
-              href="https://stackblitz.com/edit/cc-simple-counter"
-            >
-              试一试counter
             </Button>
             <Button
               target="blink"
