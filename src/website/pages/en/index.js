@@ -29,7 +29,8 @@ const MyBlock = ({ siteConfig, baseUrl, title, content, imgSrc }) => (
   </div>
 );
 
-const MyBlock2 = ({ demoUrl, autoPlay=false, siteConfig, baseUrl, title, assetSrc, isBgGray=false }) => {
+const MyBlock2 = ({ demoUrl, autoPlay=false, siteConfig, title, assetSrc, isBgGray=false }) => {
+  const baseUrl = siteConfig.baseUrl;
   const isVideo = assetSrc.endsWith('.mov');
   let displayView;
   if (isVideo) {
@@ -63,6 +64,19 @@ const MyBlock2 = ({ demoUrl, autoPlay=false, siteConfig, baseUrl, title, assetSr
       {displayView}
       <br/>
       {demoUrlView}
+    </div>
+  );
+}
+
+const ImageBlock = ({ imgUrl, siteConfig, title})=>{
+  let titleColor = siteConfig.colors.primaryColor;
+  const baseUrl = siteConfig.baseUrl;
+  const stBox = { padding: '2px 15%', textAlign: 'center' };
+  
+  return (
+    <div style={stBox}>
+      <h2 style={{ color: titleColor }}>{title}</h2>
+      <img style={{ width: '100%', maxWidth: '720px' }} src={`${baseUrl}${imgUrl}`} />
     </div>
   );
 }
@@ -217,6 +231,22 @@ class Index extends React.Component {
       </Block>
     );
 
+    const HowToInstall = () => (
+      <ImageBlock
+        siteConfig={siteConfig}
+        title="如何安装"
+        imgUrl={`img/install-concent.png`}
+      />
+    )
+
+    const HowToUse = () => (
+      <ImageBlock
+        siteConfig={siteConfig}
+        title="如何使用"
+        imgUrl={`img/run-concent.png`}
+      />
+    )
+
     const ZeroCostUse = () => (
       <MyBlock2
         autoPlay={true}
@@ -233,7 +263,6 @@ class Index extends React.Component {
     const ProgressiveUse = () => (
       <MyBlock2
         isBgGray={true}
-        baseUrl={baseUrl}
         siteConfig={siteConfig}
         title="渐进式重构，更多有趣的特性，友好的函数组件支持"
         assetSrc={`video/cc-demo-video.mov`}
@@ -388,6 +417,8 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Features />
+          <HowToInstall />
+          <HowToUse />
           <FeatureCallout />
           <ZeroCostUse />
           <ProgressiveUse />
