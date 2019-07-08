@@ -7,13 +7,13 @@
 </span></div></div></div><div class="blockElement fourByGridBlock imageAlignTop"><div class="blockImage"><img src="/concent-site/img/icon/03.png"/></div><div class="blockContent"><h2><div><span><p>状态的连接方式多样，消费粒度灵活</p>
 </span></div></h2><div><span><p>每一个cc类可以观察自己所属模块的指定key的状态变化，同时也可以通过定义connect观察其他任意模块的任意key的状态变化</p>
 </span></div></div></div><div class="blockElement fourByGridBlock imageAlignTop"><div class="blockImage"><img src="/concent-site/img/icon/04.png"/></div><div class="blockContent"><h2><div><span><p>支持多种方式提交变更状态</p>
-</span></div></h2><div><span><p>除了最传统的setState，concent还允许用户调用dispatch(type:string, payload:object)以及invoke(fn:function, ...args:any[])去修改状态</p>
+</span></div></h2><div><span><p>除了最传统的setState，concent还允许用户调用dispatch(type:string, payload:object)以及invoke(fn:function, payload:object)去修改状态</p>
 </span></div></div></div><div class="blockElement fourByGridBlock imageAlignTop"><div class="blockImage"><img src="/concent-site/img/icon/05.png"/></div><div class="blockContent"><h2><div><span><p>对组件扩展了很多强大的特性</p>
 </span></div></h2><div><span><p>模块里定义的computed和watch属于模块级别的定义，concent还允许用户在类里定义类级别的$$watch、$$computed，以满足不同场景的个性化需求，同时所有cc实例都拥有$$emit&amp;$$on能力。</p>
 </span></div></div></div><div class="blockElement fourByGridBlock imageAlignTop"><div class="blockImage"><img src="/concent-site/img/icon/06.png"/></div><div class="blockContent"><h2><div><span><p>更友好的函数式组件支持</p>
 </span></div></h2><div><span><p>concent提供CcFragment，让你临时的插入一个视图片断来消费多个模块的数据，还提供connectDumb函数包裹你的函数组件连接store</p>
 </span></div></div></div><div class="blockElement fourByGridBlock imageAlignTop"><div class="blockImage"><img src="/concent-site/img/icon/07.png"/></div><div class="blockContent"><h2><div><span><p>渲染性能出众</p>
-</span></div></h2><div><span><p>concent基于引用定位和状态广播，支持任意粒度的状态变更观察，渲染效率出众</p>
+</span></div></h2><div><span><p>concent基于引用收集、观察key标记和状态广播原理工作，支持任意粒度的状态变更观察，渲染效率出众</p>
 </span></div></div></div><div class="blockElement fourByGridBlock imageAlignTop"><div class="blockImage"><img src="/concent-site/img/icon/08.png"/></div><div class="blockContent"><h2><div><span><p>dom层级更少</p>
 </span></div></h2><div><span><p>默认采用反向继承包裹你的组件，让你的react dom树的层级结构更少更干净</p>
 </span></div></div></div><div class="blockElement fourByGridBlock imageAlignTop"><div class="blockImage"><img src="/concent-site/img/icon/09.png"/></div><div class="blockContent"><h2><div><span><p>支持中间件机制</p>

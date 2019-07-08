@@ -322,7 +322,7 @@ class Index extends React.Component {
           },
           {
             content:
-              "除了最传统的setState，concent还允许用户调用dispatch(type:string, payload:object)以及invoke(fn:function, ...args:any[])去修改状态",
+              "除了最传统的setState，concent还允许用户调用dispatch(type:string, payload:object)以及invoke(fn:function, payload:object)去修改状态",
             image: `${baseUrl}img/icon/04.png`,
             imageAlign: "top",
             title: "支持多种方式提交变更状态"
@@ -344,7 +344,7 @@ class Index extends React.Component {
           },
           {
             content:
-              "concent基于引用定位和状态广播，支持任意粒度的状态变更观察，渲染效率出众",
+              "concent基于引用收集、观察key标记和状态广播原理工作，支持任意粒度的状态变更观察，渲染效率出众",
             image: `${baseUrl}img/icon/07.png`,
             imageAlign: "top",
             title: "渲染性能出众"
