@@ -127,14 +127,12 @@
     });
    */</span>
   ctx.defineWatch({
-    <span class="hljs-comment">//表示观察 所属模块的key inputCode</span>
-    <span class="hljs-string">'/inputCode'</span>:<span class="hljs-function">(<span class="hljs-params">nevVal</span>)=&gt;</span> ctx.setModuleState({<span class="hljs-attr">msg</span>:<span class="hljs-string">'inputCode 变为 '</span>+nevVal }),
-    <span class="hljs-comment">//等效于写为</span>
-    <span class="hljs-comment">// '/inputCode':(nevVal)=&gt; ctx.setModuleState('award', {msg:'inputCode 变为 '+nevVal }),</span>
+    <span class="hljs-comment">//key inputCode的值发生变化时，触发此观察函数</span>
+    <span class="hljs-string">'inputCode'</span>:<span class="hljs-function">(<span class="hljs-params">nevVal</span>)=&gt;</span> ctx.setState({<span class="hljs-attr">msg</span>:<span class="hljs-string">'inputCode 变为 '</span>+nevVal })
   });
   ctx.defineComputed({
-    <span class="hljs-comment">//表示计算 所属模块的key inputCode</span>
-    <span class="hljs-string">'/inputCode'</span>:<span class="hljs-function">(<span class="hljs-params">newVal</span>)=&gt;</span><span class="hljs-string">`<span class="hljs-subst">${newVal}</span>_<span class="hljs-subst">${<span class="hljs-built_in">Date</span>.now()}</span>`</span>
+    <span class="hljs-comment">//key inputCode的值发生变化时，触发此计算函数</span>
+    <span class="hljs-string">'inputCode'</span>:<span class="hljs-function">(<span class="hljs-params">newVal</span>)=&gt;</span><span class="hljs-string">`<span class="hljs-subst">${newVal}</span>_<span class="hljs-subst">${<span class="hljs-built_in">Date</span>.now()}</span>`</span>
   });
 
   <span class="hljs-comment">//定义handleStrChange方法</span>
@@ -158,21 +156,21 @@
 <pre><code class="hljs"><span class="hljs-comment">//函数组件每次渲染前，mapProps都会被调用，帮助用户组装想要的props数据</span>
 <span class="hljs-keyword">const</span> mapProps = ctx =&gt; {
   <span class="hljs-comment">//将bonus的计算结果取出</span>
-  <span class="hljs-keyword">const</span> displayBonus = ctx.connectedComputed.award.bonus;
+  <span class="hljs-keyword">const</span> displayBonus = ctx.moduleComputed.bonus;
   <span class="hljs-comment">//将settings里的 handleStrChange方法、init方法 取出</span>
   <span class="hljs-keyword">const</span> { handleStrChange, <span class="hljs-keyword">init</span> } = ctx.settings;
   <span class="hljs-comment">//将inputCode取出</span>
-  <span class="hljs-keyword">const</span> { inputCode, awardList, mask, msg } = ctx.connectedState.award;
+  <span class="hljs-keyword">const</span> { inputCode, awardList, mask, msg } = ctx.moduleState;
 
   <span class="hljs-comment">//从refConnectedComputed获取实例对模块key的计算值</span>
-  <span class="hljs-keyword">const</span> { inputCode:cuInputCode } = ctx.refConnectedComputed.award;
+  <span class="hljs-keyword">const</span> { inputCode:cuInputCode } = ctx.refComputed.award;
 
   <span class="hljs-comment">//该返回结果会映射到组件的props上</span>
   <span class="hljs-keyword">return</span> { msg, cuInputCode, <span class="hljs-keyword">init</span>, mask, inputCode, awardList, displayBonus, handleStrChange }
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="连接函数组件"></a><a href="#连接函数组件" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>连接函数组件</h3>
-<pre><code class="hljs">const AwardPanel = connect<span class="hljs-constructor">Dumb({<span class="hljs-params">setup</span>, <span class="hljs-params">mapProps</span>, <span class="hljs-params">connect</span>:{<span class="hljs-params">award</span>:'<span class="hljs-operator">*</span>'}})</span>(AwardPanelUI);
+<pre><code class="hljs">const AwardPanel = connect<span class="hljs-constructor">Dumb({<span class="hljs-params">setup</span>, <span class="hljs-params">mapProps</span>, <span class="hljs-params">module</span>:'<span class="hljs-params">award</span>'})</span>(AwardPanelUI);
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="hook真的是答案吗"></a><a href="#hook真的是答案吗" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>hook真的是答案吗</h3>
 <p>有了<code>setup</code>的支持，可以将这些要用到方法提升为静态的上下文api，而不需要反复重定义，也不存在大量的临时闭包问题，同时基于函数式的写法，可以更灵活的拆分和组合你的U代码与业务代码，同时这些setup函数，经过进一步抽象，还可以被其他地方复用。</p>

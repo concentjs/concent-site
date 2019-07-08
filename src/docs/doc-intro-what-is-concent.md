@@ -96,14 +96,12 @@ const setup = ctx => {
     });
    */
   ctx.defineWatch({
-    //表示观察 所属模块的key inputCode
-    '/inputCode':(nevVal)=> ctx.setModuleState({msg:'inputCode 变为 '+nevVal }),
-    //等效于写为
-    // '/inputCode':(nevVal)=> ctx.setModuleState('award', {msg:'inputCode 变为 '+nevVal }),
+    //key inputCode的值发生变化时，触发此观察函数
+    'inputCode':(nevVal)=> ctx.setState({msg:'inputCode 变为 '+nevVal })
   });
   ctx.defineComputed({
-    //表示计算 所属模块的key inputCode
-    '/inputCode':(newVal)=>`${newVal}_${Date.now()}`
+    //key inputCode的值发生变化时，触发此计算函数
+    'inputCode':(newVal)=>`${newVal}_${Date.now()}`
   });
 
   //定义handleStrChange方法
@@ -129,14 +127,14 @@ const setup = ctx => {
 //函数组件每次渲染前，mapProps都会被调用，帮助用户组装想要的props数据
 const mapProps = ctx => {
   //将bonus的计算结果取出
-  const displayBonus = ctx.connectedComputed.award.bonus;
+  const displayBonus = ctx.moduleComputed.bonus;
   //将settings里的 handleStrChange方法、init方法 取出
   const { handleStrChange, init } = ctx.settings;
   //将inputCode取出
-  const { inputCode, awardList, mask, msg } = ctx.connectedState.award;
+  const { inputCode, awardList, mask, msg } = ctx.moduleState;
 
   //从refConnectedComputed获取实例对模块key的计算值
-  const { inputCode:cuInputCode } = ctx.refConnectedComputed.award;
+  const { inputCode:cuInputCode } = ctx.refComputed.award;
 
   //该返回结果会映射到组件的props上
   return { msg, cuInputCode, init, mask, inputCode, awardList, displayBonus, handleStrChange }
@@ -144,7 +142,7 @@ const mapProps = ctx => {
 ```
 ### 连接函数组件
 ```
-const AwardPanel = connectDumb({setup, mapProps, connect:{award:'*'}})(AwardPanelUI);
+const AwardPanel = connectDumb({setup, mapProps, module:'award'})(AwardPanelUI);
 ```
 ### hook真的是答案吗
 有了`setup`的支持，可以将这些要用到方法提升为静态的上下文api，而不需要反复重定义，也不存在大量的临时闭包问题，同时基于函数式的写法，可以更灵活的拆分和组合你的U代码与业务代码，同时这些setup函数，经过进一步抽象，还可以被其他地方复用。
