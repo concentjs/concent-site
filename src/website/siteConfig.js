@@ -43,10 +43,10 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: "doc-intro-what-is-concent", label: "docs" },
-    { doc: "api-top-run", label: "api" },
-    { doc: "release-v1-1-26", label: "changelog" },
-    { href: "https://github.com/concentjs/concent", label: "github" }
+    { doc: "doc-intro-what-is-concent", label: "Docs" },
+    { doc: "api-top-run", label: "API" },
+    { doc: "release-v1-1-26", label: "ChangeLog" },
+    { href: "https://github.com/concentjs/concent", label: "GitHub" }
   ],
 
   // If you have users set above, you add it here:

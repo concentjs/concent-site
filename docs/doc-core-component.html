@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>组件 · concent</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;hr&gt;
 "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="组件 · concent"/><meta property="og:type" content="website"/><meta property="og:url" content="https://concentjs.github.io/concent-site/concent-site/"/><meta property="og:description" content="&lt;hr&gt;
-"/><meta property="og:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/concent-site/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/concent-site/css/main.css"/><script src="/concent-site/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/concent-site/"><img class="logo" src="/concent-site/img/logo.png" alt="concent"/><h2 class="headerTitleWithLogo">concent</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/concent-site/docs/doc-intro-what-is-concent" target="_self">docs</a></li><li class=""><a href="/concent-site/docs/api-top-run" target="_self">api</a></li><li class=""><a href="/concent-site/docs/release-v1-1-26" target="_self">changelog</a></li><li class=""><a href="https://github.com/concentjs/concent" target="_self">github</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>核心概念与功能</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">序言</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-intro-what-is-concent">concent是什么</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-intro-compare-others">对比redux和mobx</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">新手指南</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-quick-start">快速开始</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-progressive-dev">渐进式的开发</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-standard-dev">标准化的开发</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">核心概念与功能</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-module">模块</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/concent-site/docs/doc-core-component">组件</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-reducer">reducer</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-debug">调试</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">生态与周边</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-eco-router">react-router-concent</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-eco-loading">concent-plugin-loading</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">精彩示例</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-case-antd-pro">concent-antd-pro</a></li></ul></div></div></section></div><script>
+"/><meta property="og:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/concent-site/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/concent-site/css/main.css"/><script src="/concent-site/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/concent-site/"><img class="logo" src="/concent-site/img/logo.png" alt="concent"/><h2 class="headerTitleWithLogo">concent</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/concent-site/docs/doc-intro-what-is-concent" target="_self">Docs</a></li><li class=""><a href="/concent-site/docs/api-top-run" target="_self">API</a></li><li class=""><a href="/concent-site/docs/release-v1-1-26" target="_self">ChangeLog</a></li><li class=""><a href="https://github.com/concentjs/concent" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>核心概念与功能</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">序言</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-intro-what-is-concent">concent是什么</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-intro-compare-others">对比redux和mobx</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">新手指南</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-quick-start">快速开始</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-progressive-dev">渐进式的开发</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-guid-standard-dev">标准化的开发</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">核心概念与功能</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-module">模块</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/concent-site/docs/doc-core-component">组件</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-reducer">reducer</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-core-debug">调试</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">生态与周边</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-eco-router">react-router-concent</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-eco-loading">concent-plugin-loading</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">精彩示例</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc-case-antd-pro">concent-antd-pro</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -51,34 +51,152 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">组件</h1></header><article><div><span><hr>
+<h2><a class="anchor" aria-hidden="true" id="类组件"></a><a href="#类组件" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>类组件</h2>
 <p>普通的<code>react类组件</code>通过<code>register</code>或者<code>connect</code>函数包裹后便成为了<code>cc类组件</code>，<code>concent</code>允许用户按需实现以下类方法</p>
-<pre><code class="hljs"><span class="hljs-meta">@register</span>(<span class="hljs-symbol">'Dem</span>o', {module:<span class="hljs-symbol">'fo</span>o'})
+<pre><code class="hljs css language-javascript">@register(<span class="hljs-string">'Demo'</span>, {<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>})
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
 
-  $$beforeSetState(){
-
-  }
-
-  $$beforeBroadcastState(){
-
-  }
-
+  <span class="hljs-comment">//定义实例级别的watch，区别于模块里的定义，</span>
+  <span class="hljs-comment">//当你需要为实例个性化定制一些watch函数时，可以在此定义，</span>
+  <span class="hljs-comment">//否则推荐使用模块里的watch，以达到代码复用的目的</span>
   $$watch(){
 
   }
 
+  <span class="hljs-comment">//同watch，推荐使用模块里的computed，以达到代码复用的目的</span>
   $$computed(){
 
   }
 
+  <span class="hljs-comment">//缓存结果，组件初次渲染前，被调用一次，结果收集在this.$$rerCache里</span>
+  <span class="hljs-comment">//适合放置一些实例级别的静态数据</span>
   $$cache(){
 
   }
 
+  <span class="hljs-comment">//配合react-router-concent使用的钩子函数</span>
+  <span class="hljs-comment">//对于react-router-dom的Route组件，点击同一个链接时，是不会触发其Component再次挂载的</span>
+  <span class="hljs-comment">//所以当你需要点击同一个链接时也让组件被刷新，</span>
+  <span class="hljs-comment">//可以接入react-router-concent，然后此方法就会被触发</span>
   $$onUrlChanged(){
   
+  }
+
+  render(){
+    <span class="hljs-keyword">const</span> {
+      <span class="hljs-comment">//props</span>
+      state,
+      $$moduleState,
+      $$globalState,
+      $$connectedState,
+      $$refComputed,
+      $$refConnectedComputed,
+      $$moduleComputed,
+      $$globalComputed,
+      $$refCache,
+
+      <span class="hljs-comment">//methods</span>
+      setState,
+      forceUpdate,
+      setModuleState,
+      setGlobalState,
+      $$dispatch,
+      $$invoke,
+      $$sync,
+      $$syncBool,
+      $$syncInt,
+      $$<span class="hljs-keyword">set</span>,
+      $$setBool,
+    } = this;
   }
 }
 
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/doc-core-module"><span class="arrow-prev">← </span><span>模块</span></a><a class="docs-next button" href="/concent-site/docs/doc-core-reducer"><span>reducer</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 concentjs.org</section></footer></div></body></html>
+<h2><a class="anchor" aria-hidden="true" id="函数组件"></a><a href="#函数组件" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>函数组件</h2>
+<h3><a class="anchor" aria-hidden="true" id="ccfragment"></a><a href="#ccfragment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CcFragment</h3>
+<p><code>CcFragment</code>是concent对class做的精心包装，让用户不需要再感知到class的存在，不需要和this打交道，也能够完美的和<code>store</code>互动。<br>
+当你需要临时的在视图里插入一个视图片段，连接上store，消费关心的数据时，<code>CcFragment</code>可以让你轻松达成目标。</p>
+<pre><code class="hljs css language-javascript">render(){
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      {/** 此片段属于foo模块，同时也连接bar、bar两个模块 */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">CcFragment</span> <span class="hljs-attr">module</span>=<span class="hljs-string">"foo"</span> 
+        <span class="hljs-attr">connect</span>=<span class="hljs-string">{{bar:</span>'*', <span class="hljs-attr">baz:</span>'*'}} 
+        <span class="hljs-attr">setup</span>=<span class="hljs-string">{ctx</span>=&gt;</span>{
+          const changeFooName = e =&gt;{
+            return ctx.dispatch('changeName', e.currentTarget.value);
+          }
+          return {changeFooName}
+        }}
+        render={(ctx)=&gt;{
+        const {
+          //props
+          state,
+          moduleState,
+          globalState,
+          connectedState,
+          refComputed,
+          refConnectedComputed,
+          moduleComputed,
+          globalComputed,
+
+          //methods
+          setState,
+          forceUpdate,
+          setModuleState,
+          setGlobalState,
+          dispatch,
+          invoke,
+          sync,
+          syncBool,
+          syncInt,
+          set,
+          setBool,
+
+          //result of setup: {changeFooName}
+          settings,
+        } = ctx;
+
+        return <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>your view<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      }}/&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  );
+}
+
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="connectdumb"></a><a href="#connectdumb" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>connectDumb</h3>
+<p><code>connectDumb</code>是对<code>CcFragment</code>的进一步抽象，让已有的纯函数组件更优雅的接入concent所有能力</p>
+<p>考虑以下一个很传统的函数组件</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> OneDumb = <span class="hljs-function">(<span class="hljs-params">{onItemClick, label, list}</span>)=&gt;</span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Card</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onItemClick}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>{label}<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      {list.map(v=&gt; <span class="hljs-tag">&lt;<span class="hljs-name">ListItem</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{v.id}</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{v.value}</span> /&gt;</span>)}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Card</span>&gt;</span>
+  );
+}
+</span></code></pre>
+<p>我们只需要定义<code>setup</code>，用于初始化一些启动配置，然后定义<code>mapProps</code>，用于构造符合函数组件props描述的对象传递给函数组件，即可让函数组件像类组件一样工作起来</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> setup = <span class="hljs-function"><span class="hljs-params">ctx</span>=&gt;</span>{
+  <span class="hljs-keyword">const</span> handleGoodsClick = <span class="hljs-function"><span class="hljs-params">goodsId</span>=&gt;</span> ctx.dispatch(<span class="hljs-string">'handleGoodsClick'</span>, goodsId);
+  <span class="hljs-keyword">return</span> {handleGoodsClick};
+}
+
+<span class="hljs-keyword">const</span> mapProps = <span class="hljs-function"><span class="hljs-params">ctx</span>=&gt;</span>{
+  <span class="hljs-keyword">const</span> {label, list} = ctx.state;
+  <span class="hljs-keyword">const</span> onItemClick = ctx.settings.handleGoodsClick;
+  <span class="hljs-keyword">return</span> {onItemClick, label, list};
+}
+</code></pre>
+<p>连接函数组件, 然后就可以提供给上传业务使用了</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> GoodsList = connectDumb({
+  <span class="hljs-attr">module</span>:<span class="hljs-string">'goods'</span>, setup, mapProps
+})(OneDumb);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> GoodsList;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="更多精彩"></a><a href="#更多精彩" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>更多精彩</h2>
+<p>更多精彩示例请参考<a href="https://stackblitz.com/@fantasticsoul">这里</a>。<br>
+详细使用方法参考API文档。</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/doc-core-module"><span class="arrow-prev">← </span><span>模块</span></a><a class="docs-next button" href="/concent-site/docs/doc-core-reducer"><span>reducer</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#类组件">类组件</a></li><li><a href="#函数组件">函数组件</a><ul class="toc-headings"><li><a href="#ccfragment">CcFragment</a></li><li><a href="#connectdumb">connectDumb</a></li></ul></li><li><a href="#更多精彩">更多精彩</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 concentjs.org</section></footer></div></body></html>
