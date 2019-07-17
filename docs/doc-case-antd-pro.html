@@ -51,4 +51,99 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">接入concent的ant design pro</h1></header><article><div><span><hr>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/doc-eco-loading"><span class="arrow-prev">← </span><span>concent-plugin-loading</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 concentjs.org</section></footer></div></body></html>
+<p><h1 align="center">Ant Design Pro Concent</h1></p>
+<h2><a class="anchor" aria-hidden="true" id="enjoy-concent-https-githubcom-concentjs-concent"></a><a href="#enjoy-concent-https-githubcom-concentjs-concent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enjoy <a href="https://github.com/concentjs/concent">concent</a>🥺🥺🥺</h2>
+<p>你的star将是我最大的精神鼓励，<a href="https://github.com/concentjs/concent">欢迎star</a></p>
+<h2><a class="anchor" aria-hidden="true" id="ant-design-pro-powered-by-concent-https-githubcom-concentjs-antd-pro-concent"></a><a href="#ant-design-pro-powered-by-concent-https-githubcom-concentjs-antd-pro-concent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="https://github.com/concentjs/antd-pro-concent">Ant Design Pro powered by concent</a> 🎉🎉🎉</h2>
+<p>尽管<code>concent</code>有一套自己的标准的开发方式，但是其灵活的架构设计非常的容易与现有的项目集成，此案例将<code>concent</code>接入到<code>antd-pro</code>(js版本的最后一个版本2.2.0)，源代码业务逻辑没有做任何改动，只是做了如下修改，lint-staged验收通过：</p>
+<ul>
+<li>在src目录下加入runConcent脚本</li>
+<li>models 全部替换为concent格式定义的，因为umi会自动读取model文件夹定义注入到dva里，所以所有concent相关的model都放在了model-cc文件夹下</li>
+<li>组件层的装饰器，全部用<code>concent</code>替换了<code>dva</code>，并做了少许语法的修改</li>
+<li>引入<code>concent-plugin-loading</code>插件，用于自动设置<code>reducer</code>函数的开始和结束状态</li>
+<li>引入<code>react-router-concent</code>，用于连接<code>react-router</code>和<code>concent</code></li>
+<li>引入<code>concent-middleware-web-devtool</code>(第一个可用版本，比较简陋^_^)，用于查看状态<code>concent</code>状态变迁过程</li>
+</ul>
+<blockquote>
+<p>注意，运行期项目后，可以打开console，输入<code>sss</code>,查看store，输入<code>cc.dispatch</code>或<code>cc.reducer.**</code>直接触发调用，更多api请移步<a href="https://concentjs.github.io/concent-site/">concent官网文档</a>查看，更多antd-pro知识了解请移步<a href="https://pro.ant.design/index-cn">antd-pro官网</a></p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="如何运行"></a><a href="#如何运行" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>如何运行</h2>
+<ul>
+<li>下载源代码</li>
+</ul>
+<pre><code class="hljs">git clone git@github<span class="hljs-selector-class">.com</span>:concentjs/antd-pro-concent<span class="hljs-selector-class">.git</span>
+</code></pre>
+<ul>
+<li>进入根目录，安装依赖包</li>
+</ul>
+<pre><code class="hljs">npm <span class="hljs-selector-tag">i</span>
+</code></pre>
+<ul>
+<li>运行和调试项目</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-built_in">npm</span> start
+</code></pre>
+<blockquote>
+<p>默认src目录下放置的是<code>concent</code>版本的源代码，如需运行<code>dva</code>版本，执行<code>npm run start:old</code>，切换为<code>concent</code>,执行<code>npm run start:cc</code></p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="其他"></a><a href="#其他" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>其他</h2>
+<p>happy coding, enjoy concent ^_^<br>
+<a href="https://github.com/concentjs/concent">欢迎star</a></p>
+<hr>
+<div align="center">
+<p>An out-of-box UI solution for enterprise applications as a React boilerplate.</p>
+<p><img src="https://user-images.githubusercontent.com/8186664/44953195-581e3d80-aec4-11e8-8dcb-54b9db38ec11.png" alt=""></p>
+</div>
+<h2><a class="anchor" aria-hidden="true" id="templates"></a><a href="#templates" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Templates</h2>
+<pre><code class="hljs">- Dashboard
+  - Analytic
+  - Monitor
+  - Workspace
+- Form
+  - Basic Form
+  - <span class="hljs-keyword">Step</span> Form
+  - Advanced <span class="hljs-keyword">From</span>
+- List
+  - Standard Table
+  - Standard List
+  - Card List
+  - Search List (Project/Applications/Article)
+-<span class="hljs-built_in"> Profile
+</span>  -<span class="hljs-built_in"> Simple Profile
+</span>  - Advanced<span class="hljs-built_in"> Profile
+</span>- Account
+  - Account Center
+  - Account<span class="hljs-built_in"> Settings
+</span>- Result
+  - Success
+  - Failed
+- Exception
+  - 403
+  - 404
+  - 500
+-<span class="hljs-built_in"> User
+</span>  - Login
+  - Register
+  - Register Result
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="usage"></a><a href="#usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+<h3><a class="anchor" aria-hidden="true" id="use-bash"></a><a href="#use-bash" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use bash</h3>
+<pre><code class="hljs css language-bash">$ git <span class="hljs-built_in">clone</span> https://github.com/concentjs/antd-pro-concent.git --depth=1
+$ <span class="hljs-built_in">cd</span> antd-pro-concent
+$ npm install
+$ npm start         <span class="hljs-comment"># visit http://localhost:8000</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use-by-docker"></a><a href="#use-by-docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use by docker</h3>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># sorry, image to be build......</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="browsers-support"></a><a href="#browsers-support" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Browsers support</h2>
+<p>Modern browsers and IE11.</p>
+<table>
+<thead>
+<tr><th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" /></a></br>IE / Edge</th><th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /></a></br>Firefox</th><th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /></a></br>Chrome</th><th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /></a></br>Safari</th><th><a href="http://godban.github.io/browsers-support-badges/"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" /></a></br>Opera</th></tr>
+</thead>
+<tbody>
+<tr><td>IE11, Edge</td><td>last 2 versions</td><td>last 2 versions</td><td>last 2 versions</td><td>last 2 versions</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/doc-eco-loading"><span class="arrow-prev">← </span><span>concent-plugin-loading</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#enjoy-concent-https-githubcom-concentjs-concent">Enjoy <a href="https://github.com/concentjs/concent">concent</a>🥺🥺🥺</a></li><li><a href="#ant-design-pro-powered-by-concent-https-githubcom-concentjs-antd-pro-concent">Ant Design Pro powered by concent</a></li><li><a href="#如何运行">如何运行</a></li><li><a href="#其他">其他</a></li><li><a href="#templates">Templates</a></li><li><a href="#usage">Usage</a><ul class="toc-headings"><li><a href="#use-bash">Use bash</a></li><li><a href="#use-by-docker">Use by docker</a></li></ul></li><li><a href="#browsers-support">Browsers support</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 concentjs.org</section></footer></div></body></html>
