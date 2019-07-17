@@ -147,7 +147,7 @@ const AwardPanel = connectDumb({setup, mapProps, module:'award'})(AwardPanelUI);
 ### hook真的是答案吗
 有了`setup`的支持，可以将这些要用到方法提升为静态的上下文api，而不需要反复重定义，也不存在大量的临时闭包问题，同时基于函数式的写法，可以更灵活的拆分和组合你的U代码与业务代码，同时这些setup函数，经过进一步抽象，还可以被其他地方复用。
 
-同时函数式编程也更利于`typescript`做类型推到，`concent`对函数组件友好支持，让用户可以在`class`和`function`之间按需选择，`concent`还允许定义`state`来做局部状态管理，所以经过`connectDumb`包裹的`function`组件，既能够读写本地状态，又能够读写store状态，还有什么更好的理由非要使用`hook`不可呢？
+同时函数式编程也更利于`typescript`做类型推导，`concent`对函数组件友好支持，让用户可以在`class`和`function`之间按需选择，`concent`还允许定义`state`来做局部状态管理，所以经过`connectDumb`包裹的`function`组件，既能够读写本地状态，又能够读写store状态，还有什么更好的理由非要使用`hook`不可呢？
 ```
 const AwardPanel = connectDumb({
   //推荐写为函数式写法，因为直接声明对象的话，concent也会对其做深克隆操作

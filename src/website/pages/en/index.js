@@ -145,7 +145,6 @@ class HomeSplash extends React.Component {
         {/* <Logo img_src={`${baseUrl}img/undraw_monitor.svg`} /> */}
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
-
           <PromoSection>
             <Button
               target="blink"
