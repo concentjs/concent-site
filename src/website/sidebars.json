@@ -48,15 +48,9 @@
       "api-type-ccfragment-ctx",
       "api-type-watch-fn"
     ],
-    "类api": [
-      "api-class-watch",
-      "api-class-computed",
-      "api-class-on-url-changed",
-      "api-class-cache"
-    ],
-    "实例api": [
-      "api-ref-dispatch",
-      "api-ref-invoke",
+    "实例上下文api": [
+      "api-ctx-dispatch",
+      "api-ctx-invoke",
       "api-ref-set-state",
       "api-ref-set-module-state",
       "api-ref-set-global-state",
