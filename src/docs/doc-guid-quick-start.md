@@ -18,7 +18,7 @@ ___
 - 数据由store直接注入到了`state`
 - `setState`具有了改写store的能力
 - `state`同时也允许扩充自己的私有字段
-- `this.$$dispatch`是concent注入的函数，因为`concent`的高阶函数`register`默认使用反向继承策略来包裹你的react类，这样可以使得dom层级更少
+- `this.ctx.dispatch`是concent注入的函数，因为`concent`的高阶函数`register`默认使用反向继承策略来包裹你的react类，这样可以使得dom层级更少
 ```
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -47,23 +47,28 @@ class HelloConcent_ extends React.Component{
     super(props, context);
     this.state = {_privText:''}
   }
+
   componentDidMount(){
-    this.$$emit('receiveMsg', `[${this.props.tag}] mounted`);
+    this.ctx.emit('receiveMsg', `[${this.props.tag}] mounted`);
   }
+
   changeName = (e)=>{
     const name = e.currentTarget.value;
-    this.$$dispatch('changeName', name);
+    this.ctx.dispatch('changeName', name);
   }
+
   changeText = (e)=>{
     const text = e.currentTarget.value;
     //注意，此处调用setState，另一个实例的UI也会触发渲染
     this.setState({text});
   }
+
   changePrivText = (e)=>{
     const _privText = e.currentTarget.value;
     //注意，此处调用setState，另一个实例的UI并不会触发渲染，因为并不是store里声明的字段
     this.setState({_privText});
   }
+
   render(){
     console.log('watch', this.state);
     const { name, text } = this.state;
@@ -174,48 +179,46 @@ run({
 /** 定义一个类组件 */
 class HelloConcent_ extends React.Component{
   componentDidMount(){
-    this.$$emit('receiveMsg', `[${this.props.tag}] mounted`);
+    this.ctx.emit('receiveMsg', `[${this.props.tag}] mounted`);
   }
+
   changeName = (e)=>{
     const name = e.currentTarget.value;
-    this.$$dispatch('changeName', name);
+    this.ctx.dispatch('changeName', name);
   }
-  //定义实例级别的computed
-  $$computed(){
-    return {
-      name:(newVal)=>{
-        return `ref computed[${newVal}]`
-      }
-    }
+
+  $$setup(ctx){
+    //定义实例级别的computed
+    ctx.computed('name', (newVal)=>{
+      return `ref computed[${newVal}]`
+    });
+
+    //定义实例级别的watch
+    ctx.watch('name', (newVal)=>{
+      ctx.emit('receiveMsg', `come from ref[${this.props.tag}] watch ${newVal}`);
+      // alert('come from ref watch '+newVal);
+    });
   }
-  //定义实例级别的watch
-  $$watch(){
-    return {
-      name:(newVal)=>{
-        this.$$emit('receiveMsg', `come from ref[${this.props.tag}] watch ${newVal}`);
-        // alert('come from ref watch '+newVal);
-      }
-    }
-  }
+
   render(){
     console.log('watch', this.state);
     const { name, text } = this.state;
-    const { name: reversedName } = this.$$moduleComputed;//取出计算好的反转值
+    const { name: reversedName } = this.ctx.moduleComputed;//取出计算好的反转值
     return (
       <fieldset style={{border:'3px solid green',width:'300px', display:'inline-block'}}>
         <legend>class demo</legend>
         <p>{text} {name}</p>
         <p>module reversedName:{reversedName}</p>
-        <p>ref reversedName:{this.$$refComputed.name}</p>
+        <p>ref reversedName:{this.ctx.refComputed.name}</p>
         <input value={name} onChange={this.changeName} style={{width:'200px'}} />
       </fieldset>
     );
   }
 } 
-/** 祖册为到welcomeModule模块的组件 */
-const HelloConcent = register('HelloConcent',{module:'welcomeModule', watchedKeys:'*'})(HelloConcent_)
+/** 注册为一个属于welcomeModule模块的cc组件，cc类名叫HelloConcent */
+const HelloConcent = register({module:'welcomeModule', watchedKeys:'*'}, 'HelloConcent')(HelloConcent_)
 // 简写为
-// const HelloConcent = register('HelloConcent','welcomeModule')(HelloConcent_)
+// const HelloConcent = register('welcomeModule', 'HelloConcent')(HelloConcent_)
 ```
 
 ### function组件
@@ -248,7 +251,7 @@ const setup = ctx=>{
   //定义changeName函数
   const changeName = e =>{
     const name = e.currentTarget.value;
-    // ctx.$$dispatch('changeName', name);
+    // ctx.ctx.dispatch('changeName', name);
     // or
     ctx.reducer.welcomeModule.changeName(name);
   };
@@ -309,12 +312,11 @@ connectDumb是基于`CcFragment`的进一步抽象，有的时候我们可能只
 ```
 // <<< ----------------------  此处定义一个MsgBoard，用于辅助显示通知消息 ----------------------
 const setupBoard = ctx => {
-  ctx.defineEffect(() => {
-    ctx.on('receiveMsg', msg => {
-      const msgList = ctx.state.msgList;
-      msgList.push(msg);
-      ctx.setState({msgList});
-    });
+  //定义on事件监听，concent会确保组件挂载完毕才开始接受监听事件触发监听函数
+  ctx.on('receiveMsg', msg => {
+    const msgList = ctx.state.msgList;
+    msgList.push(msg);
+    ctx.setState({msgList});
   });
 }
 

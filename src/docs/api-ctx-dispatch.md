@@ -5,7 +5,37 @@ sidebar_label: ctx.dispatch
 ---
 ___
 
-所有实例都可以调用`ctx.dispatch`来呼叫`reducer`函数，具体介绍请移步[dispatch](api-common-dispatch)
+所有实例都可以调用`ctx.dispatch`来呼叫`reducer`函数，
+
+## 函数签名定义
+```
+type TypeDescriptor = {
+  type: string,
+  module?: string,
+  reducerModule?: string,
+};
+
+dispatch: (
+  type: string | TypeDescriptor,
+  payload?:any, 
+  renderKey?:string
+  delay?:number, 
+)=>Promise<any>
+```
+
+以下是`dispatch`的快速上手使用介绍，如了解更详细的参数介绍请移步[这里](api-common-dispatch)
+
+`renderKey`和`delay`参数的说明及使用方式见[setState](api-ctx-set-state)
+
+## 参数解释
+* type<br/>
+欲调用的reducer函数类型描述
+* payload<br/>
+当typeOrAction为函数名时，传递的参数
+* renderKey<br/>
+当typeOrAction为函数名时，触发渲染的目标渲染Key
+* delay<br/>
+当typeOrAction为函数名时，广播延迟时间，单位(ms)
 
 ## 如何使用
 ### 触发所属模块的`reducer`

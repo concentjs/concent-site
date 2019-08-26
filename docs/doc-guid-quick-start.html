@@ -63,7 +63,7 @@
 <li>数据由store直接注入到了<code>state</code></li>
 <li><code>setState</code>具有了改写store的能力</li>
 <li><code>state</code>同时也允许扩充自己的私有字段</li>
-<li><code>this.$$dispatch</code>是concent注入的函数，因为<code>concent</code>的高阶函数<code>register</code>默认使用反向继承策略来包裹你的react类，这样可以使得dom层级更少</li>
+<li><code>this.ctx.dispatch</code>是concent注入的函数，因为<code>concent</code>的高阶函数<code>register</code>默认使用反向继承策略来包裹你的react类，这样可以使得dom层级更少</li>
 </ul>
 <pre><code class="hljs"><span class="hljs-keyword">import</span> React from <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM from <span class="hljs-string">'react-dom'</span>;
@@ -92,23 +92,28 @@ run({
     <span class="hljs-keyword">super</span>(props, context);
     <span class="hljs-keyword">this</span>.state = {_privText:<span class="hljs-string">''</span>}
   }
+
   componentDidMount(){
-    <span class="hljs-keyword">this</span>.$$emit(<span class="hljs-string">'receiveMsg'</span>, `[${<span class="hljs-keyword">this</span>.props.tag}] mounted`);
+    <span class="hljs-keyword">this</span>.ctx.emit(<span class="hljs-string">'receiveMsg'</span>, `[${<span class="hljs-keyword">this</span>.props.tag}] mounted`);
   }
+
   changeName = (e)=&gt;{
     <span class="hljs-keyword">const</span> name = e.currentTarget.value;
-    <span class="hljs-keyword">this</span>.$$dispatch(<span class="hljs-string">'changeName'</span>, name);
+    <span class="hljs-keyword">this</span>.ctx.dispatch(<span class="hljs-string">'changeName'</span>, name);
   }
+
   changeText = (e)=&gt;{
     <span class="hljs-keyword">const</span> text = e.currentTarget.value;
     <span class="hljs-comment">//注意，此处调用setState，另一个实例的UI也会触发渲染</span>
     <span class="hljs-keyword">this</span>.setState({text});
   }
+
   changePrivText = (e)=&gt;{
     <span class="hljs-keyword">const</span> _privText = e.currentTarget.value;
     <span class="hljs-comment">//注意，此处调用setState，另一个实例的UI并不会触发渲染，因为并不是store里声明的字段</span>
     <span class="hljs-keyword">this</span>.setState({_privText});
   }
+
   render(){
     console.log(<span class="hljs-string">'watch'</span>, <span class="hljs-keyword">this</span>.state);
     <span class="hljs-keyword">const</span> { name, text } = <span class="hljs-keyword">this</span>.state;
@@ -211,48 +216,46 @@ run({
 <pre><code class="hljs"><span class="hljs-comment">/** 定义一个类组件 */</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloConcent_</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
   componentDidMount(){
-    <span class="hljs-keyword">this</span>.$$emit(<span class="hljs-string">'receiveMsg'</span>, <span class="hljs-string">`[<span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.tag}</span>] mounted`</span>);
+    <span class="hljs-keyword">this</span>.ctx.emit(<span class="hljs-string">'receiveMsg'</span>, <span class="hljs-string">`[<span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.tag}</span>] mounted`</span>);
   }
+
   changeName = <span class="hljs-function">(<span class="hljs-params">e</span>)=&gt;</span>{
     <span class="hljs-keyword">const</span> name = e.currentTarget.value;
-    <span class="hljs-keyword">this</span>.$$dispatch(<span class="hljs-string">'changeName'</span>, name);
+    <span class="hljs-keyword">this</span>.ctx.dispatch(<span class="hljs-string">'changeName'</span>, name);
   }
-  <span class="hljs-comment">//定义实例级别的computed</span>
-  $$computed(){
-    <span class="hljs-keyword">return</span> {
-      <span class="hljs-attr">name</span>:<span class="hljs-function">(<span class="hljs-params">newVal</span>)=&gt;</span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">`ref computed[<span class="hljs-subst">${newVal}</span>]`</span>
-      }
-    }
+
+  $$setup(ctx){
+    <span class="hljs-comment">//定义实例级别的computed</span>
+    ctx.computed(<span class="hljs-string">'name'</span>, (newVal)=&gt;{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`ref computed[<span class="hljs-subst">${newVal}</span>]`</span>
+    });
+
+    <span class="hljs-comment">//定义实例级别的watch</span>
+    ctx.watch(<span class="hljs-string">'name'</span>, (newVal)=&gt;{
+      ctx.emit(<span class="hljs-string">'receiveMsg'</span>, <span class="hljs-string">`come from ref[<span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.tag}</span>] watch <span class="hljs-subst">${newVal}</span>`</span>);
+      <span class="hljs-comment">// alert('come from ref watch '+newVal);</span>
+    });
   }
-  <span class="hljs-comment">//定义实例级别的watch</span>
-  $$watch(){
-    <span class="hljs-keyword">return</span> {
-      <span class="hljs-attr">name</span>:<span class="hljs-function">(<span class="hljs-params">newVal</span>)=&gt;</span>{
-        <span class="hljs-keyword">this</span>.$$emit(<span class="hljs-string">'receiveMsg'</span>, <span class="hljs-string">`come from ref[<span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.tag}</span>] watch <span class="hljs-subst">${newVal}</span>`</span>);
-        <span class="hljs-comment">// alert('come from ref watch '+newVal);</span>
-      }
-    }
-  }
+
   render(){
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'watch'</span>, <span class="hljs-keyword">this</span>.state);
     <span class="hljs-keyword">const</span> { name, text } = <span class="hljs-keyword">this</span>.state;
-    <span class="hljs-keyword">const</span> { <span class="hljs-attr">name</span>: reversedName } = <span class="hljs-keyword">this</span>.$$moduleComputed;<span class="hljs-comment">//取出计算好的反转值</span>
+    <span class="hljs-keyword">const</span> { <span class="hljs-attr">name</span>: reversedName } = <span class="hljs-keyword">this</span>.ctx.moduleComputed;<span class="hljs-comment">//取出计算好的反转值</span>
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{border:</span>'<span class="hljs-attr">3px</span> <span class="hljs-attr">solid</span> <span class="hljs-attr">green</span>',<span class="hljs-attr">width:</span>'<span class="hljs-attr">300px</span>', <span class="hljs-attr">display:</span>'<span class="hljs-attr">inline-block</span>'}}&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>class demo<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{text} {name}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>module reversedName:{reversedName}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ref reversedName:{this.$$refComputed.name}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ref reversedName:{this.ctx.refComputed.name}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{name}</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.changeName}</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{width:</span>'<span class="hljs-attr">200px</span>'}} /&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
     );
   }
 } 
-/** 祖册为到welcomeModule模块的组件 */
-const HelloConcent = register('HelloConcent',{module:'welcomeModule', watchedKeys:'*'})(HelloConcent_)
+/** 注册为一个属于welcomeModule模块的cc组件，cc类名叫HelloConcent */
+const HelloConcent = register({module:'welcomeModule', watchedKeys:'*'}, 'HelloConcent')(HelloConcent_)
 // 简写为
-// const HelloConcent = register('HelloConcent','welcomeModule')(HelloConcent_)
+// const HelloConcent = register('welcomeModule', 'HelloConcent')(HelloConcent_)
 </span></code></pre>
 <h3><a class="anchor" aria-hidden="true" id="function组件"></a><a href="#function组件" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>function组件</h3>
 <pre><code class="hljs"><span class="hljs-comment">// &lt;&lt;&lt;------------------- 定义一个function组件 ---------------------</span>
@@ -283,7 +286,7 @@ const HelloConcent = register('HelloConcent',{module:'welcomeModule', watchedKey
   <span class="hljs-comment">//定义changeName函数</span>
   <span class="hljs-keyword">const</span> changeName = e =&gt;{
     <span class="hljs-keyword">const</span> name = e.currentTarget.value;
-    <span class="hljs-comment">// ctx.$$dispatch('changeName', name);</span>
+    <span class="hljs-comment">// ctx.ctx.dispatch('changeName', name);</span>
     <span class="hljs-comment">// or</span>
     ctx.reducer.welcomeModule.changeName(name);
   };
@@ -342,12 +345,11 @@ const HelloConcent = register('HelloConcent',{module:'welcomeModule', watchedKey
 <p>connectDumb是基于<code>CcFragment</code>的进一步抽象，有的时候我们可能只是在视图里插入一个片段，快速连接其他模块并消费数据，皆可以直接使用<code>CcFragment</code></p>
 <pre><code class="hljs"><span class="hljs-comment">// &lt;&lt;&lt; ----------------------  此处定义一个MsgBoard，用于辅助显示通知消息 ----------------------</span>
 <span class="hljs-keyword">const</span> setupBoard = <span class="hljs-function"><span class="hljs-params">ctx</span> =&gt;</span> {
-  ctx.defineEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-    ctx.on(<span class="hljs-string">'receiveMsg'</span>, msg =&gt; {
-      <span class="hljs-keyword">const</span> msgList = ctx.state.msgList;
-      msgList.push(msg);
-      ctx.setState({msgList});
-    });
+  <span class="hljs-comment">//定义on事件监听，concent会确保组件挂载完毕才开始接受监听事件触发监听函数</span>
+  ctx.on(<span class="hljs-string">'receiveMsg'</span>, msg =&gt; {
+    <span class="hljs-keyword">const</span> msgList = ctx.state.msgList;
+    msgList.push(msg);
+    ctx.setState({msgList});
   });
 }
 

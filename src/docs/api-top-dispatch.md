@@ -9,7 +9,7 @@ ___
 ## 函数签名
 ```
 dispatch: (
-  typeDescriptor:string, 
+  type:string, 
   payload?:object, 
   delay?:number, 
   identity?:string
@@ -29,7 +29,7 @@ dispatch('*/resetTime');
 
 ## 何时使用
 在cc类、reducer方法外部，想要调用某个模块的reducer方法时，使用dispatch去触发，同时因为顶层的`dispatch`支持模糊匹配调用，当你使用了模块克隆功能时，如果想集中的做一些清理工作，可以很方便的使用`*/{reducerFunctionName}`语法去调用
-> 真实的业务场景里，推荐使用cc类实例里的`this.$$dispatch`、reducer函数参数列表里的`dispatch`，它们携带了调用实例的上下文信息，同时能够形成调用链，方便`concent`做集中式的提交状态任务的管理和优化
+> 真实的业务场景里，推荐使用cc类实例里的[ctx.dispatch](api-ctx-dispatch)、reducer函数参数列表里的`dispatch`，它们携带了调用实例的上下文信息，同时能够形成调用链，方便`concent`做集中式的提交状态任务的管理和优化
 
 ## console里使用
 打开浏览器console窗口，输入cc.dispatch即可以console里使用该接口

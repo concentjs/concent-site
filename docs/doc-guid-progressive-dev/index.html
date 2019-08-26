@@ -240,27 +240,27 @@ export <span class="hljs-function"><span class="hljs-keyword">function</span> <s
 
 </code></pre>
 <blockquote>
-<p>计算后的结果将搜集在<code>$$moduleComputed</code>里，render期间可以通过<code>this.$$moduleComputed.{key}</code>获得结果</p>
+<p>计算后的结果将搜集在<code>ctx.moduleComputed</code>里，render期间可以通过<code>this.ctx.moduleComputed.{key}</code>获得结果</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="concent组件改造完成"></a><a href="#concent组件改造完成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>concent组件改造完成</h2>
 <p>然后我们将原来的类改写为如下示例</p>
 <pre><code class="hljs"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AwardPanel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   <span class="hljs-comment">/** 首次挂载完毕，做初始化动作 */</span>
   componentDidMount() {
-    <span class="hljs-keyword">this</span>.$$dispatch(<span class="hljs-string">'init'</span>);
+    <span class="hljs-keyword">this</span>.ctx.dispatch(<span class="hljs-string">'init'</span>);
   }
   <span class="hljs-comment">/** 关闭时上报关闭行为 */</span>
   componentWillUnmount(){
-    <span class="hljs-keyword">this</span>.$$dispatch(<span class="hljs-string">'track'</span>);
+    <span class="hljs-keyword">this</span>.ctx.dispatch(<span class="hljs-string">'track'</span>);
   }
   <span class="hljs-comment">/** 处理输入变化 */</span>
   handleStrChange = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
     <span class="hljs-keyword">const</span> inputCode = e.currentTarget.value;
-    <span class="hljs-keyword">this</span>.$$dispatch(<span class="hljs-string">'handleInputCodeChange'</span>, inputCode);
+    <span class="hljs-keyword">this</span>.ctx.dispatch(<span class="hljs-string">'handleInputCodeChange'</span>, inputCode);
   }
   render() {
     <span class="hljs-keyword">const</span> { mask, inputCode, awardList, displayBonus } = <span class="hljs-keyword">this</span>.state;
-    <span class="hljs-keyword">const</span> { <span class="hljs-attr">bonus</span>:displayBonus } = <span class="hljs-keyword">this</span>.$$moduleComputed;
+    <span class="hljs-keyword">const</span> { <span class="hljs-attr">bonus</span>:displayBonus } = <span class="hljs-keyword">this</span>.ctx.moduleComputed;
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{stBox}</span>&gt;</span>
         {

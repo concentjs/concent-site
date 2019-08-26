@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>ctx.invoke · concent</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;hr&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="ctx.invoke · concent"/><meta property="og:type" content="website"/><meta property="og:url" content="https://concentjs.github.io/concent-site/concent-site/"/><meta property="og:description" content="&lt;hr&gt;
+"/><meta property="og:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/concent-site/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/concent-site/css/main.css"/><script src="/concent-site/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/concent-site/"><img class="logo" src="/concent-site/img/logo.png" alt="concent"/><h2 class="headerTitleWithLogo">concent</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/concent-site/docs/doc-intro-what-is-concent" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/concent-site/docs/api-top-run" target="_self">API</a></li><li class=""><a href="/concent-site/docs/release-v1-1-26" target="_self">ChangeLog</a></li><li class=""><a href="https://github.com/concentjs/concent" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>实例上下文api</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">顶层api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-run">run</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-configure">configure</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-clone-module">cloneModule</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-register">register</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-connect">connect</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-connect-dumb">connectDumb</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-emit">emit</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-emit-with">emitWith</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-dispatch">dispatch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-state">getState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-global-state">getGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-computed">getComputed</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-set-state">setState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-set-global-state">setGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-call">call</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-execute">execute</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-execute-all">executeAll</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">通用类型解释</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-handler-ctx">HandlerCtx</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-ccfragment-ctx">CcFragmentCtx</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-watch-fn">WatchFn</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">实例上下文api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-dispatch">ctx.dispatch</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/concent-site/docs/api-ctx-invoke">ctx.invoke</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-state">ctx.setState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-module-state">ctx.setModuleState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-global-state">ctx.setGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-computed">ctx.computed</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-watch">ctx.watch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-sync-bool">ctx.syncBool</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set">ctx.set</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-emit">ctx.emit</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-on">ctx.on</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-off">ctx.off</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CcFragment api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc5">Fifth Document</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">通用api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-common-dispatch">dispatch</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">ctx.invoke</h1></header><article><div><span><hr>
+<p><code>invoke</code>和<code>dispatch</code>本质上没有区别，都是触发一个函数，拿到该函数的返回结果作为新的片段状态提交给当前触发调用的实例，并提取模块状态广播给其他实例，唯一的不同就是<code>dispatch</code>可以呼叫事先规划在<code>reducer</code>里的函数，<code>invoke</code>允许用户直接呼叫自定义的函数</p>
+<h2><a class="anchor" aria-hidden="true" id="函数签名定义"></a><a href="#函数签名定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>函数签名定义</h2>
+<pre><code class="hljs"><span class="hljs-keyword">type</span> InvokeFn =<span class="hljs-function"> (<span class="hljs-params">payload</span>:<span class="hljs-params">any</span>, <span class="hljs-params">moduleState</span>:<span class="hljs-params">object</span>, <span class="hljs-params">ctx</span>:H<span class="hljs-params">andlerCtx</span>)=&gt;</span>object <span class="hljs-pattern-match">| undefined;
+<span class="hljs-keyword">type</span> <span class="hljs-constructor">InvokeObj</span> = {fn:<span class="hljs-constructor">InvokeFn</span>, <span class="hljs-keyword">module</span>:<span class="hljs-built_in">string</span>};
+
+invoke: (
+  fn<span class="hljs-constructor">OrObj</span>: <span class="hljs-constructor">InvokeFn</span> | <span class="hljs-constructor">InvokeObj</span>, 
+  payload?:any, 
+  render<span class="hljs-constructor">Key</span>?:<span class="hljs-built_in">string</span>
+  delay?:number, 
+)=&gt;</span>Promise&lt;any&gt;
+</code></pre>
+<blockquote>
+<p>HandlerCtx移步<a href="api-type-handler-ctx">这里查看</a></p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="参数解释"></a><a href="#参数解释" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>参数解释</h2>
+<ul>
+<li>fn<br/>
+欲调用的函数</li>
+<li>payload<br/>
+传递的参数</li>
+<li>renderKey<br/>
+触发渲染的目标渲染Key</li>
+<li>delay<br/>
+广播延迟时间，单位(ms)</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="如何使用"></a><a href="#如何使用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>如何使用</h2>
+<h3><a class="anchor" aria-hidden="true" id="在class里调用"></a><a href="#在class里调用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在Class里调用</h3>
+<pre><code class="hljs css language-jsx"><span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">changeName</span>(<span class="hljs-params">name</span>)</span>{
+  <span class="hljs-keyword">return</span> {name};
+}
+
+@register({<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:{<span class="hljs-attr">bar</span>:<span class="hljs-string">'*'</span>, <span class="hljs-attr">baz</span>:<span class="hljs-string">'*'</span>}}, <span class="hljs-string">'Foo'</span>);
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
+  changeBarName = <span class="hljs-function">(<span class="hljs-params">e</span>)=&gt;</span>{
+    <span class="hljs-comment">//修改foo模块的数据, 写法1</span>
+    <span class="hljs-keyword">this</span>.ctx.invoke(changeName, e.currentTarget.value);
+
+    <span class="hljs-comment">//修改foo模块的数据，写法2，因当前类属于foo，</span>
+    <span class="hljs-comment">//调用方法时上下文默认修改的就是foo模块的数据，所以推荐用写法1</span>
+    <span class="hljs-keyword">this</span>.ctx.invoke({<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">fn</span>:changeName}, e.currentTarget.value);
+
+    <span class="hljs-comment">//修改其他模块(如 bar)的数据</span>
+    <span class="hljs-comment">//注意bar模块的state里也含有stateKey：name</span>
+    <span class="hljs-keyword">this</span>.ctx.invoke({<span class="hljs-attr">module</span>:<span class="hljs-string">'bar'</span>, <span class="hljs-attr">fn</span>:changeName}, e.currentTarget.value);
+  }
+}
+</code></pre>
+<blockquote>
+<p>注意调用方实例属于<code>foo</code>模块，<code>this.ctx.invoke</code>触发的函数指定修改的是<code>bar</code>模块的数据的时候，只有<code>bar</code>模块下关心<code>changeName</code>函数返回状态的实例会被触发渲染</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="在renderprops里使用"></a><a href="#在renderprops里使用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在RenderProps里使用</h3>
+<h4><a class="anchor" aria-hidden="true" id="在ui函数里定义并调用"></a><a href="#在ui函数里定义并调用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在UI函数里定义并调用</h4>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">//直接在回调定义函数</span>
+registerDumb({<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:{<span class="hljs-attr">bar</span>:<span class="hljs-string">'*'</span>, <span class="hljs-attr">baz</span>:<span class="hljs-string">'*'</span>}}, <span class="hljs-string">'Foo'</span>)(<span class="hljs-function"><span class="hljs-params">ctx</span>=&gt;</span>{
+  <span class="hljs-keyword">const</span> handleNameChanged = <span class="hljs-function"><span class="hljs-params">e</span>=&gt;</span> ctx.invoke(changeName, e.currentTarget.value);
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{ctx.state.name}</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleNameChanged}</span> /&gt;</span>
+});
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="在mapprops里定义并调用"></a><a href="#在mapprops里定义并调用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在mapProps里定义并调用</h4>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">//定义mapProps, 组件每次渲染前都被调用，返回结果传递给组件的props</span>
+<span class="hljs-keyword">const</span> mapProps = <span class="hljs-function"><span class="hljs-params">ctx</span>=&gt;</span>{
+  <span class="hljs-keyword">const</span> handleNameChanged = <span class="hljs-function"><span class="hljs-params">e</span>=&gt;</span> ctx.invoke(changeName, e.currentTarget.value);
+  <span class="hljs-keyword">return</span> {<span class="hljs-attr">name</span>:ctx.state.name, handleNameChanged};
+}
+
+registerDumb({<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:{<span class="hljs-attr">bar</span>:<span class="hljs-string">'*'</span>, <span class="hljs-attr">baz</span>:<span class="hljs-string">'*'</span>}, mapProps}, <span class="hljs-string">'Foo'</span>)(
+<span class="hljs-function">(<span class="hljs-params">{name, handleNameChanged}</span>)=&gt;</span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{name}</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleNameChanged}</span> /&gt;</span>
+});
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="在setup里定义并调用"></a><a href="#在setup里定义并调用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在setup里定义并调用</h4>
+<pre><code class="hljs css language-jsx"><span class="hljs-comment">//定义setup，只在组件初次渲染前被调用一次，返回结果放置在ctx.settings里</span>
+<span class="hljs-keyword">const</span> setup = <span class="hljs-function"><span class="hljs-params">ctx</span>=&gt;</span>{
+  <span class="hljs-keyword">const</span> handleNameChanged = <span class="hljs-function"><span class="hljs-params">e</span>=&gt;</span> ctx.invoke(changeName, e.currentTarget.value);
+  <span class="hljs-keyword">return</span> {handleNameChanged}
+}
+
+<span class="hljs-keyword">const</span> mapProps = <span class="hljs-function"><span class="hljs-params">ctx</span>=&gt;</span>{
+  <span class="hljs-keyword">const</span> handleNameChanged = ctx.settings.handleNameChanged;
+  <span class="hljs-keyword">return</span> {<span class="hljs-attr">name</span>:ctx.state.name, handleNameChanged};
+}
+
+registerDumb({<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:{<span class="hljs-attr">bar</span>:<span class="hljs-string">'*'</span>, <span class="hljs-attr">baz</span>:<span class="hljs-string">'*'</span>}, mapProps}, <span class="hljs-string">'Foo'</span>)(
+<span class="hljs-function">(<span class="hljs-params">{name, handleNameChanged}</span>)=&gt;</span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{name}</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleNameChanged}</span> /&gt;</span>
+});
+
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="组合多个invoke调用"></a><a href="#组合多个invoke调用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>组合多个invoke调用</h3>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setLoading</span>(<span class="hljs-params">loading</span>)</span>{
+  <span class="hljs-keyword">return</span> {loading};
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">changeName</span>(<span class="hljs-params">name</span>)</span>{
+  <span class="hljs-keyword">return</span> {name};
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handelNameChanged</span>(<span class="hljs-params">name, moduleState, ctx</span>)</span>{
+  <span class="hljs-keyword">await</span> ctx.invoke(setLoading, <span class="hljs-literal">true</span>);
+  <span class="hljs-keyword">await</span> ctx.invoke(changeName, name);
+  <span class="hljs-keyword">await</span> ctx.invoke(setLoading, <span class="hljs-literal">false</span>);
+}
+
+@register(<span class="hljs-string">'Foo'</span>, {<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:{<span class="hljs-attr">bar</span>:<span class="hljs-string">'*'</span>, <span class="hljs-attr">baz</span>:<span class="hljs-string">'*'</span>}});
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
+  changeBarName = <span class="hljs-function">(<span class="hljs-params">e</span>)=&gt;</span>{
+    <span class="hljs-keyword">this</span>.ctx.invoke(handelNameChanged, e.currentTarget.value);
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="混合dispatch调用"></a><a href="#混合dispatch调用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>混合dispatch调用</h3>
+<p>既调用自定义函数，也调用reducer函数</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">changeName</span>(<span class="hljs-params">name</span>)</span>{
+  <span class="hljs-keyword">return</span> {name};
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handelNameChanged</span>(<span class="hljs-params">name, moduleState, ctx</span>)</span>{
+  <span class="hljs-keyword">await</span> ctx.dispatch(<span class="hljs-string">'setLoading'</span>, <span class="hljs-literal">true</span>);
+  <span class="hljs-keyword">await</span> ctx.invoke(changeName, name);
+  <span class="hljs-keyword">await</span> ctx.dispatch(<span class="hljs-string">'setLoading'</span>, <span class="hljs-literal">false</span>);
+}
+
+@register(<span class="hljs-string">'Foo'</span>, {<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:{<span class="hljs-attr">bar</span>:<span class="hljs-string">'*'</span>, <span class="hljs-attr">baz</span>:<span class="hljs-string">'*'</span>}});
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
+  changeBarName = <span class="hljs-function">(<span class="hljs-params">e</span>)=&gt;</span>{
+    <span class="hljs-keyword">this</span>.ctx.invoke(handelNameChanged, e.currentTarget.value);
+  }
+}
+</code></pre>
+<blockquote>
+<p>invoke提供了一种更自由的方式组织业务代码，但是如果项目里修改模块状态都是走reducer的话，建议统一走reducer，当然用户可以根据一些特殊场景的需要或者个人喜好，走invoke组织业务代码的方式。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="在ccfragment里使用"></a><a href="#在ccfragment里使用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在CcFragment里使用</h2>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">CcFragment</span> <span class="hljs-attr">render</span>=<span class="hljs-string">{()</span>=&gt;</span>{
+  
+}}&gt;
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/api-ctx-dispatch"><span class="arrow-prev">← </span><span>ctx.dispatch</span></a><a class="docs-next button" href="/concent-site/docs/api-ctx-set-state"><span class="function-name-prevnext">ctx.setState</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#函数签名定义">函数签名定义</a></li><li><a href="#参数解释">参数解释</a></li><li><a href="#如何使用">如何使用</a><ul class="toc-headings"><li><a href="#在class里调用">在Class里调用</a></li><li><a href="#在renderprops里使用">在RenderProps里使用</a></li><li><a href="#组合多个invoke调用">组合多个invoke调用</a></li><li><a href="#混合dispatch调用">混合dispatch调用</a></li></ul></li><li><a href="#在ccfragment里使用">在CcFragment里使用</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 concentjs.org</section></footer></div></body></html>

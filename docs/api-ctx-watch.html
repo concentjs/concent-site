@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>为实例定义观察属性 · concent</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;hr&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="为实例定义观察属性 · concent"/><meta property="og:type" content="website"/><meta property="og:url" content="https://concentjs.github.io/concent-site/concent-site/"/><meta property="og:description" content="&lt;hr&gt;
+"/><meta property="og:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/concent-site/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/concent-site/css/main.css"/><script src="/concent-site/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/concent-site/"><img class="logo" src="/concent-site/img/logo.png" alt="concent"/><h2 class="headerTitleWithLogo">concent</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/concent-site/docs/doc-intro-what-is-concent" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/concent-site/docs/api-top-run" target="_self">API</a></li><li class=""><a href="/concent-site/docs/release-v1-1-26" target="_self">ChangeLog</a></li><li class=""><a href="https://github.com/concentjs/concent" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>实例上下文api</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">顶层api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-run">run</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-configure">configure</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-clone-module">cloneModule</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-register">register</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-connect">connect</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-connect-dumb">connectDumb</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-emit">emit</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-emit-with">emitWith</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-dispatch">dispatch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-state">getState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-global-state">getGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-computed">getComputed</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-set-state">setState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-set-global-state">setGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-call">call</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-execute">execute</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-execute-all">executeAll</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">通用类型解释</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-handler-ctx">HandlerCtx</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-ccfragment-ctx">CcFragmentCtx</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-watch-fn">WatchFn</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">实例上下文api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-dispatch">ctx.dispatch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-invoke">ctx.invoke</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-state">ctx.setState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-module-state">ctx.setModuleState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-global-state">ctx.setGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-computed">ctx.computed</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/concent-site/docs/api-ctx-watch">ctx.watch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-sync-bool">ctx.syncBool</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set">ctx.set</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-emit">ctx.emit</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-on">ctx.on</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-off">ctx.off</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CcFragment api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc5">Fifth Document</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">通用api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-common-dispatch">dispatch</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">为实例定义观察属性</h1></header><article><div><span><hr>
+<p>实例上下文对象提供的<code>watch</code>函数允许用户按需要自定义计算属性，当相关依赖<code>stateKey</code>发生变化时，才会重触发观察回调。</p>
+<blockquote>
+<p>该函数属于实例级别的观察函数，即定义完毕后每一个实例都可能触发自己的观察函数，如果观察的key是模块级的key且观察回调逻辑对于所有实例来说都一样时，建议将watch定义到模块里，以便减少不必要的函数调用。<br>
+调用的时候一定要在<code>setup</code>里调用，在组件初次渲染之前就静态的定义好相关观察属性。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="函数签名定义"></a><a href="#函数签名定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>函数签名定义</h2>
+<pre><code class="hljs css language-javascript">type WatchFn = <span class="hljs-function">(<span class="hljs-params">newVal:any, oldVal:any, fnCtx:FnCtx, refCtx:RefCtx</span>)=&gt;</span> boolean | <span class="hljs-literal">undefined</span>;
+type WatchDescriptor = {
+  <span class="hljs-attr">fn</span>: WatchFn,
+  depKeys?: string[] | <span class="hljs-string">'*'</span> | <span class="hljs-literal">null</span>,
+  compare?: boolean,
+  immediate?: boolean,
+}
+
+type WatchDescriptorConfig = {
+  [resultKey:string]: WatchDescriptor
+};
+
+watch: (
+  resultKey: string,
+  <span class="hljs-attr">fn</span>: WatchFn,
+  depKeys?: string[] | <span class="hljs-string">'*'</span> | <span class="hljs-literal">null</span>,
+  compare?: boolean,
+  immediate?: boolean,
+)=&gt; <span class="hljs-keyword">void</span>;
+
+watch: (
+  resultKey:string,
+  <span class="hljs-attr">watchDescriptor</span>: WatchDescriptor
+)=&gt; <span class="hljs-keyword">void</span>;
+
+watch: (
+  watchDescriptorConfig: WatchDescriptorConfig
+)=&gt; <span class="hljs-keyword">void</span>;
+
+watch: (
+  cb: <span class="hljs-function">(<span class="hljs-params">refCtx:RefCtx</span>) =&gt;</span> WatchDescriptorConfig
+)=&gt; <span class="hljs-keyword">void</span>;
+</code></pre>
+<p>从签名定义上看起来和<code>computed</code>很像，但是<code>watch</code>不要求返回具体点的值，通常用于做一些异步的任务处理。</p>
+<blockquote>
+<p>watch的检查触发时机和computed一样都是处于<code>render</code>之前，但watch处于computed之后</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="参数解释"></a><a href="#参数解释" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>参数解释</h2>
+<ul>
+<li><strong><em>resultKey</em></strong><br/>
+观察key,如果和<code>stateKey</code>同名时，如果用户不显示的定义<code>depKeys</code>的话，默认的<code>depKeys</code>就是只包含了此<code>stateKey</code>的数组</li>
+<li><strong><em>fn</em></strong><br/>
+观察回调函数,stateKey依赖列表里任何一个key的值发生变化时，将触发其回调函数</li>
+<li><strong><em>depKeys</em></strong><br/>
+<code>dependencyStateKeys</code>的缩写,依赖的stateKey列表，列表中任意一项key的值发生变化时，触发观察回调函数</li>
+</ul>
+<blockquote>
+<p>当<code>resultKey</code>为<code>stateKey</code>时，如果用户不显示的定义<code>depKeys</code>的话，默认的<code>depKeys</code>就是只包含了此<code>stateKey</code>的数组，即只有该<code>stateKey</code>变化时，才触发回调</p>
+</blockquote>
+<ul>
+<li><strong><em>compare</em></strong><br/>
+触发策略，默认是true，表示只有stateKey的值发生变化时才触发回调函数，如果改为false，只要用户设置了stateKey的值就会触发回调函数。</li>
+</ul>
+<blockquote>
+<p>在concent启动时，配置<code>watchCompare</code>为false，则所有<code>watch</code>调用不显式的设置<code>compare</code>时，默认为false。</p>
+</blockquote>
+<ul>
+<li><strong><em>immediate</em></strong><br/>
+触发策略，默认是false，观察函数在组件初次渲染前默认是不执行，如果设置immediate为true，则在组件初次渲染前一定会触发回调函数指定，此时的触发原因和<code>depKeys</code>没关系</li>
+</ul>
+<blockquote>
+<p>在concent启动时，配置<code>watchImmediate</code>为true，则所有<code>watch</code>调用不显式的设置<code>immediate</code>时，默认为true。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="定义statekey做观察"></a><a href="#定义statekey做观察" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>定义stateKey做观察</h2>
+<p>假设有如下模块定义</p>
+<pre><code class="hljs css language-javascript">run({
+  <span class="hljs-attr">foo</span>:{
+    <span class="hljs-attr">state</span>:{
+      <span class="hljs-attr">selectedCity</span>:<span class="hljs-string">''</span>,
+      <span class="hljs-attr">cities</span>:[<span class="hljs-string">'bj'</span>, <span class="hljs-string">'sh'</span>],
+      <span class="hljs-attr">streets</span>:[],
+    }
+  }
+});
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="观察key为普通的statekey"></a><a href="#观察key为普通的statekey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>观察key为普通的stateKey</h3>
+<p>selectedCity发生变化时是从后端获取对应的街道</p>
+<pre><code class="hljs css language-javascript">@register(<span class="hljs-string">'foo'</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
+  $$setup(ctx){
+    <span class="hljs-comment">//此时retKey 'selectedCity'等于stateKey,所以可以不用指定depKeys</span>
+    <span class="hljs-comment">//等同于写为 ctx.watch('selectedCity', ()=&gt;{...}, ['selectedCity'])</span>
+
+    ctx.watch(<span class="hljs-string">'selectedCity'</span>, (newVal)=&gt;{
+
+      <span class="hljs-comment">// 如果定义了相关reducer，也可以走dispatch</span>
+      <span class="hljs-comment">// or ctx.dispatch('fetchStreets', newVal);</span>
+
+      api.fetchStreets(<span class="hljs-string">`/street/<span class="hljs-subst">${newVal}</span>`</span>, (streets)=&gt;{
+        <span class="hljs-comment">//设置streets，触发新的渲染</span>
+        ctx.setState({streets});
+      });
+    });
+    
+  }
+  render(){
+    <span class="hljs-comment">// 将触发两次render，一次是'selectedCity'改变触发render，</span>
+    <span class="hljs-comment">// 一次是'selectedCity'的watch回调里触发的render</span>
+
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        {/** 这里使用了sync语法糖，onChange修改的值直通同步给'selectedCity'触发组件渲染 */}
+        <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.ctx.sync(</span>'<span class="hljs-attr">selectedCity</span>')}&gt;</span>
+          {/** options 略 */}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+</code></pre>
+<ul>
+<li>采用<code>WatchDescriptor</code>方式定义</li>
+</ul>
+<pre><code class="hljs css language-javascript">@register(<span class="hljs-string">'foo'</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
+  $$setup(ctx){
+    ctx.watch(<span class="hljs-string">'selectedCity'</span>, {
+      <span class="hljs-attr">fn</span>: <span class="hljs-function">(<span class="hljs-params">newVal</span>)=&gt;</span>{
+        <span class="hljs-comment">// ... code here</span>
+      },
+      <span class="hljs-attr">immediate</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">compare</span>: <span class="hljs-literal">true</span>,
+    });
+    
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="观察key为带模块前缀的statekey"></a><a href="#观察key为带模块前缀的statekey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>观察key为带模块前缀的stateKey</h3>
+<p>一个连接了其他模块的实例，要依赖其对应模块的<code>stateKey</code>触发观察回调时，可以在<code>retKey</code>前加模块名前缀并用斜杠分隔</p>
+<pre><code class="hljs css language-javascript">@register({<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:[<span class="hljs-string">'bar'</span>]})
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
+  $$setup(ctx){
+    <span class="hljs-comment">//当bar模块的selectedCity发生变化时，触发回调</span>
+    ctx.watch(<span class="hljs-string">'bar/selectedCity'</span>, (newVal)=&gt;{
+      <span class="hljs-comment">// your code here</span>
+    });
+
+    <span class="hljs-comment">//等同于写为</span>
+    ctx.watch(<span class="hljs-string">'bar/selectedCity'</span>, (newVal)=&gt;{}, [<span class="hljs-string">'selectedCity'</span>]);
+  }
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="定义非statekey做观察"></a><a href="#定义非statekey做观察" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>定义非stateKey做观察</h2>
+<h3><a class="anchor" aria-hidden="true" id="观察key为普通的非statekey"></a><a href="#观察key为普通的非statekey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>观察key为普通的非stateKey</h3>
+<p>当用户定义的<code>retKey</code>不是<code>stateKey</code>时，需要用户显式的指定<code>depKeys</code>，以便让<code>concent</code>知道在<code>depKeys</code>列表里任意一个key发生变化时，触发调用其<code>retKey</code>对应的回调函数</p>
+<pre><code class="hljs css language-javascript">@register(<span class="hljs-string">'foo'</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
+  $$setup(ctx){
+    <span class="hljs-comment">//此时retKey 'onCityOrStreetChanged'是一个自定义的观察key，</span>
+    <span class="hljs-comment">//其回调触发是当depKeys里['selectedCity', 'selectedStreet']任意一个key的值发生变化的时候</span>
+    ctx.watch(<span class="hljs-string">'cityOrStreetChanged'</span>, (newState, oldState, fnCtx)=&gt;{
+      <span class="hljs-comment">// your code here</span>
+      <span class="hljs-built_in">console</span>.log(fnCtx.changed);<span class="hljs-comment">//打印发生变化的key有哪些</span>
+    }, [<span class="hljs-string">'selectedCity'</span>, <span class="hljs-string">'selectedStreet'</span>]);
+    
+  }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="观察key为带模块前缀的非statekey"></a><a href="#观察key为带模块前缀的非statekey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>观察key为带模块前缀的非stateKey</h3>
+<p>当需要观察其他模块的stateKey触发其定义的回调时</p>
+<pre><code class="hljs css language-javascript">@register({<span class="hljs-attr">module</span>:<span class="hljs-string">'foo'</span>, <span class="hljs-attr">connect</span>:[<span class="hljs-string">'bar'</span>]})
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span></span>{
+  $$setup(ctx){
+    <span class="hljs-comment">//确保bar模块下有stateKey 'selectedCity', 'selectedStreet'，否则会报错</span>
+    ctx.watch(<span class="hljs-string">'bar/cityOrStreetChanged'</span>, (newState, oldState, fnCtx)=&gt;{
+      <span class="hljs-comment">// your code here</span>
+    }, [<span class="hljs-string">'selectedCity'</span>, <span class="hljs-string">'selectedStreet'</span>]);
+    
+  }
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/api-ctx-computed"><span class="arrow-prev">← </span><span>ctx.computed</span></a><a class="docs-next button" href="/concent-site/docs/api-ctx-sync"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#函数签名定义">函数签名定义</a></li><li><a href="#参数解释">参数解释</a></li><li><a href="#定义statekey做观察">定义stateKey做观察</a><ul class="toc-headings"><li><a href="#观察key为普通的statekey">观察key为普通的stateKey</a></li><li><a href="#观察key为带模块前缀的statekey">观察key为带模块前缀的stateKey</a></li></ul></li><li><a href="#定义非statekey做观察">定义非stateKey做观察</a><ul class="toc-headings"><li><a href="#观察key为普通的非statekey">观察key为普通的非stateKey</a></li><li><a href="#观察key为带模块前缀的非statekey">观察key为带模块前缀的非stateKey</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 concentjs.org</section></footer></div></body></html>

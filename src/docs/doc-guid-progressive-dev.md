@@ -197,7 +197,7 @@ export function bonus(newVal, oldVal){
 }
 
 ```
->计算后的结果将搜集在`$$moduleComputed`里，render期间可以通过`this.$$moduleComputed.{key}`获得结果
+>计算后的结果将搜集在`ctx.moduleComputed`里，render期间可以通过`this.ctx.moduleComputed.{key}`获得结果
 
 ## concent组件改造完成
 然后我们将原来的类改写为如下示例
@@ -205,20 +205,20 @@ export function bonus(newVal, oldVal){
 class AwardPanel extends React.Component {
   /** 首次挂载完毕，做初始化动作 */
   componentDidMount() {
-    this.$$dispatch('init');
+    this.ctx.dispatch('init');
   }
   /** 关闭时上报关闭行为 */
   componentWillUnmount(){
-    this.$$dispatch('track');
+    this.ctx.dispatch('track');
   }
   /** 处理输入变化 */
   handleStrChange = (e) => {
     const inputCode = e.currentTarget.value;
-    this.$$dispatch('handleInputCodeChange', inputCode);
+    this.ctx.dispatch('handleInputCodeChange', inputCode);
   }
   render() {
     const { mask, inputCode, awardList, displayBonus } = this.state;
-    const { bonus:displayBonus } = this.$$moduleComputed;
+    const { bonus:displayBonus } = this.ctx.moduleComputed;
     return (
       <div style={stBox}>
         {

@@ -133,7 +133,16 @@ export function theme(newVal, oldVal){
 export function theme(newVal, oldVal){
   //做一些其他的异步操作
 }
+
+//对象式定义computed函数
+export const myTheme = {
+  fn: (newState, oldState)=>{
+    return `border: ${newState.borderWidth} solid ${newState.theme}`;
+  },
+  depKeys:['theme', 'borderWidth']
+}
 ```
+[对象式定义详情参加此处](api-ctx-computed)
 - init文件
 ```
 //code in models/global/init.js

@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>ctx.dispatch · concent</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;hr&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="ctx.dispatch · concent"/><meta property="og:type" content="website"/><meta property="og:url" content="https://concentjs.github.io/concent-site/concent-site/"/><meta property="og:description" content="&lt;hr&gt;
+"/><meta property="og:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://concentjs.github.io/concent-site/concent-site/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/concent-site/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/concent-site/css/main.css"/><script src="/concent-site/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/concent-site/"><img class="logo" src="/concent-site/img/logo.png" alt="concent"/><h2 class="headerTitleWithLogo">concent</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/concent-site/docs/doc-intro-what-is-concent" target="_self">Docs</a></li><li class="siteNavGroupActive"><a href="/concent-site/docs/api-top-run" target="_self">API</a></li><li class=""><a href="/concent-site/docs/release-v1-1-26" target="_self">ChangeLog</a></li><li class=""><a href="https://github.com/concentjs/concent" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>实例上下文api</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">顶层api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-run">run</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-configure">configure</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-clone-module">cloneModule</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-register">register</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-connect">connect</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-connect-dumb">connectDumb</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-emit">emit</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-emit-with">emitWith</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-dispatch">dispatch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-state">getState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-global-state">getGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-get-computed">getComputed</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-set-state">setState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-set-global-state">setGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-call">call</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-execute">execute</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-top-execute-all">executeAll</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">通用类型解释</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-handler-ctx">HandlerCtx</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-ccfragment-ctx">CcFragmentCtx</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-type-watch-fn">WatchFn</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">实例上下文api</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/concent-site/docs/api-ctx-dispatch">ctx.dispatch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-invoke">ctx.invoke</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-state">ctx.setState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-module-state">ctx.setModuleState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set-global-state">ctx.setGlobalState</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-computed">ctx.computed</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-watch">ctx.watch</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-sync-bool">ctx.syncBool</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-set">ctx.set</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-emit">ctx.emit</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-on">ctx.on</a></li><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-ctx-off">ctx.off</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">CcFragment api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/doc5">Fifth Document</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">通用api</h3><ul class=""><li class="navListItem"><a class="navItem" href="/concent-site/docs/api-common-dispatch">dispatch</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">ctx.dispatch</h1></header><article><div><span><hr>
+<p>所有实例都可以调用<code>ctx.dispatch</code>来呼叫<code>reducer</code>函数，</p>
+<h2><a class="anchor" aria-hidden="true" id="函数签名定义"></a><a href="#函数签名定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>函数签名定义</h2>
+<pre><code class="hljs"><span class="hljs-keyword">type</span> <span class="hljs-type">TypeDescriptor</span> = {
+  <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span>,
+  module?: <span class="hljs-built_in">string</span>,
+  reducerModule?: <span class="hljs-built_in">string</span>,
+};
+
+dispatch: (
+  <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span> | <span class="hljs-type">TypeDescriptor</span>,
+  payload?:<span class="hljs-built_in">any</span>, 
+  renderKey?:<span class="hljs-built_in">string</span>
+  delay?:number, 
+)=&gt;<span class="hljs-type">Promise</span>&lt;<span class="hljs-built_in">any</span>&gt;
+</code></pre>
+<p>以下是<code>dispatch</code>的快速上手使用介绍，如了解更详细的参数介绍请移步<a href="api-common-dispatch">这里</a></p>
+<p><code>renderKey</code>和<code>delay</code>参数的说明及使用方式见<a href="api-ctx-set-state">setState</a></p>
+<h2><a class="anchor" aria-hidden="true" id="参数解释"></a><a href="#参数解释" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>参数解释</h2>
+<ul>
+<li>type<br/>
+欲调用的reducer函数类型描述</li>
+<li>payload<br/>
+当typeOrAction为函数名时，传递的参数</li>
+<li>renderKey<br/>
+当typeOrAction为函数名时，触发渲染的目标渲染Key</li>
+<li>delay<br/>
+当typeOrAction为函数名时，广播延迟时间，单位(ms)</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="如何使用"></a><a href="#如何使用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>如何使用</h2>
+<h3><a class="anchor" aria-hidden="true" id="触发所属模块的-reducer"></a><a href="#触发所属模块的-reducer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>触发所属模块的<code>reducer</code></h3>
+<p>任意一个concent组件都有一个所属模块，如果在注册成为concent组件时用户不指定，则类会被归为<code>$$default</code>模块，调用<code>ctx.dispatch</code>时，不添加模块前缀字符串，则表示调用所属模块的<code>reducer</code>函数去修改所属模块的数据</p>
+<ul>
+<li>class hoc 方式</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { register } from <span class="hljs-symbol">'concen</span>t';
+
+<span class="hljs-meta">@register</span>(<span class="hljs-symbol">'fo</span>o')
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
+  changeName = (e)=&gt;{
+    <span class="hljs-keyword">this</span>.ctx.dispatch(<span class="hljs-symbol">'changeNam</span>e', e.currentTargetValue);
+    <span class="hljs-comment">// 等同于</span>
+    <span class="hljs-comment">// this.ctx.dispatch('foo/changeName', e.currentTargetValue);</span>
+  }
+  render(){
+    <span class="hljs-keyword">return</span> &lt;h1 onClick={handelClick}&gt;hello concent&lt;/h1&gt;
+  }
+}
+</code></pre>
+<ul>
+<li>renderProps 方式</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { registerDumb } <span class="hljs-keyword">from</span> <span class="hljs-string">'concent'</span>;
+
+registerDumb(<span class="hljs-string">'foo'</span>)(<span class="hljs-function"><span class="hljs-params">ctx</span>=&gt;</span>{
+  <span class="hljs-keyword">const</span> handelClick = <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> ctx.dispatch(<span class="hljs-string">'changeName'</span>);
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handelClick}</span>&gt;</span>hello concent<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+  );
+})
+</code></pre>
+<ul>
+<li>hook 方式</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { useConcent } <span class="hljs-keyword">from</span> <span class="hljs-string">'concent'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Hello</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">const</span> ctx = useConcent(<span class="hljs-string">'foo'</span>);
+  <span class="hljs-keyword">const</span> handelClick = <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> ctx.dispatch(<span class="hljs-string">'changeName'</span>);
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handelClick}</span>&gt;</span>hello concent<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+  );
+}
+
+</code></pre>
+<blockquote>
+<p>如果调用方的实例所属的模块和调用<code>reducer</code>时指定的修改状态模块一样时，允许reducer返回一些非模块里<code>stateKey</code>，此时属于模块的那部分状态会同步到store并随后会被广播到其他实例，属于非模块的状态（即用户自定义的扩展的私有状态）连同模块状态一起传递给调用实例</p>
+</blockquote>
+<pre><code class="hljs"><span class="hljs-meta">@register</span>(<span class="hljs-symbol">'fo</span>o');
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
+  state = {
+    _privName:'',
+  }
+  changeName = (e)=&gt;{
+    <span class="hljs-comment">//当前实例属于foo模块，调用doSomething，</span>
+    <span class="hljs-comment">//不指定修改状态模块，默认就是修改当前实例所属模块foo的状态</span>
+    <span class="hljs-keyword">this</span>.ctx.dispatch(<span class="hljs-symbol">'doSomethin</span>g');
+  }
+}
+
+<span class="hljs-comment">//code in model/foo/state.js</span>
+export <span class="hljs-keyword">default</span> {
+  name:<span class="hljs-symbol">'z</span>k',
+  age:<span class="hljs-number">1</span>,
+}
+
+<span class="hljs-comment">//code in model/foo/reducer.js</span>
+export function doSomething(payload, moduleState){
+  <span class="hljs-comment">//新的片段状态要提交到foo模块，和调用实例所属模块一样</span>
+  <span class="hljs-comment">//则整个状态{name:'newName', age:19, _privName:'xxx'}都会提交给实例</span>
+  <span class="hljs-comment">//同时属于模块的状态{name:'newName', age:19}被提取出来，同步到store，广播给其他实例</span>
+  <span class="hljs-keyword">return</span> {name:<span class="hljs-symbol">'newNam</span>e', age:<span class="hljs-number">19</span>, _privName:<span class="hljs-symbol">'xx</span>x'};
+}
+
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="触发其他模块的-reducer"></a><a href="#触发其他模块的-reducer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>触发其他模块的<code>reducer</code></h3>
+<pre><code class="hljs"><span class="hljs-meta">@register</span>(<span class="hljs-symbol">'ba</span>r');
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span>{
+  changeName = (e)=&gt;{
+    <span class="hljs-comment">//当前实例属于bar模块，调用doSomething方法修改foo模块的数据</span>
+    <span class="hljs-keyword">this</span>.$$dispatch(<span class="hljs-symbol">'foo</span>/doSomething');
+  }
+}
+
+<span class="hljs-comment">//code in model/foo/reducer.js</span>
+export function doSomething(payload, moduleState){
+  <span class="hljs-comment">//新的片段状态要提交到foo模块，和调用实例所属模块bar不一致</span>
+  <span class="hljs-comment">//此时属于foo模块的状态{name:'newName', age:19}被提取出来，同步到store，广播给其他实例</span>
+  <span class="hljs-comment">//{_privName:'xxx'}则被丢弃</span>
+  <span class="hljs-keyword">return</span> {name:<span class="hljs-symbol">'newNam</span>e', age:<span class="hljs-number">19</span>, _privName:<span class="hljs-symbol">'xx</span>x'};
+}
+
+</code></pre>
+<blockquote>
+<p>所有要对调用关系保持清醒，通常一个模块的reducer都应该只被自己模块的实例调用，如果存在着某个模块的reducer被其他模块的实例调用的情况，则需要注意保持该模块的<code>reducer</code>函数返回的片段状态只属于这个模块，而不夹着其他私有状态</p>
+</blockquote>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/concent-site/docs/api-type-watch-fn"><span class="arrow-prev">← </span><span class="function-name-prevnext">WatchFn</span></a><a class="docs-next button" href="/concent-site/docs/api-ctx-invoke"><span>ctx.invoke</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#函数签名定义">函数签名定义</a></li><li><a href="#参数解释">参数解释</a></li><li><a href="#如何使用">如何使用</a><ul class="toc-headings"><li><a href="#触发所属模块的-reducer">触发所属模块的<code>reducer</code></a></li><li><a href="#触发其他模块的-reducer">触发其他模块的<code>reducer</code></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 concentjs.org</section></footer></div></body></html>
