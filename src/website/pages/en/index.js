@@ -248,7 +248,7 @@ class Index extends React.Component {
       <ImageBlock
         siteConfig={siteConfig}
         title="如何使用"
-        imgUrl={[`img/cccc1.png`, `img/cccc2.png`, `img/cccc3.png`]}
+        imgUrl={[`img/cccc1-v2.png`, `img/cccc2.png`, `img/cccc3.png`]}
       />
     )
 
