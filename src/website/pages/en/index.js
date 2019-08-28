@@ -72,11 +72,15 @@ const ImageBlock = ({ imgUrl, siteConfig, title})=>{
   let titleColor = siteConfig.colors.primaryColor;
   const baseUrl = siteConfig.baseUrl;
   const stBox = { padding: '2px 15%', textAlign: 'center' };
-  
+  const imgView = Array.isArray(imgUrl) ? imgUrl.map(url => {
+    return <img key={url} style={{ width: '100%', maxWidth: '720px' }} src={`${baseUrl}${url}`} />
+  }) :
+    <img style={{ width: '100%', maxWidth: '720px' }} src={`${baseUrl}${imgUrl}`} />;
+
   return (
     <div style={stBox}>
       <h2 style={{ color: titleColor }}>{title}</h2>
-      <img style={{ width: '100%', maxWidth: '720px' }} src={`${baseUrl}${imgUrl}`} />
+      {imgView}
     </div>
   );
 }
@@ -201,17 +205,19 @@ class Index extends React.Component {
           react-router-concent
         </a>
         <MarkdownBlock>
-          {`
-            让你的concent应用与react-router在一起工作，上手简单，理解容易
-            `}
+          {`让你的concent应用与react-router在一起工作，上手简单，理解容易 `}
         </MarkdownBlock>
         <a href="https://github.com/concentjs/concent-plugin-loading" target="blank">
           concent-plugin-loading
         </a>
         <MarkdownBlock>
-          {`
-            一个让你能够轻松的集中管理各个模块loading状态的插件
-            `}
+          {` 集中管理各个模块的loading状态、模块下reducer函数的loading状态的插件`}
+        </MarkdownBlock>
+        <a href="https://github.com/concentjs/concent-plugin-redux-devtool" target="blank">
+          concent-plugin-redux-devtool
+        </a>
+        <MarkdownBlock>
+          {`桥接了redux-dev-tool的concent插件，让concent应用的状态变更同步到chrome的reduxDevTool插件，方便追溯状态变迁历史`}
         </MarkdownBlock>
       </div>
     );
@@ -242,7 +248,7 @@ class Index extends React.Component {
       <ImageBlock
         siteConfig={siteConfig}
         title="如何使用"
-        imgUrl={`img/run-concent.png`}
+        imgUrl={[`img/cccc1.png`, `img/cccc2.png`, `img/cccc3.png`]}
       />
     )
 
